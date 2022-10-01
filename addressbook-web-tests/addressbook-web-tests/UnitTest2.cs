@@ -21,7 +21,7 @@ namespace address_book_web_tests
         public void SetupTest()
         {
             driver = new FirefoxDriver();
-            baseURL = "http://localhost/addressbook";
+            baseURL = "http://localhost/addressbook/";
             verificationErrors = new StringBuilder();
         }
 
@@ -42,7 +42,7 @@ namespace address_book_web_tests
         [Test]
         public void TheAddGroupTest()
         {
-            driver.Navigate().GoToUrl("baseURL");
+            driver.Navigate().GoToUrl(baseURL);
             driver.FindElement(By.Name("user")).Click();
             driver.FindElement(By.Name("user")).Clear();
             driver.FindElement(By.Name("user")).SendKeys("admin");
