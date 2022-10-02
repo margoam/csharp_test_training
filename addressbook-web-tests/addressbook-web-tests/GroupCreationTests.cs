@@ -7,7 +7,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 
-namespace AddressbookWebTests
+namespace addressbook_web_tests
 {
     [TestFixture] // attribute
     public class GroupCreationTests
@@ -43,7 +43,7 @@ namespace AddressbookWebTests
         public void GroupCreationTest()
         {
             OpenHomePage();
-            Login("admin", "secret");
+            Login(new AccountData("admin", "secret"));
             GoToGroupsPage();
             CreationNewGroup();
             FillGroupform("test_name", "test_header", "test_footer");
@@ -85,15 +85,15 @@ namespace AddressbookWebTests
             driver.FindElement(By.LinkText("groups")).Click();
         }
 
-        private void Login(string username, string password)
+        private void Login(AccountData account)
         {
             driver.FindElement(By.Name("user")).Click();
             driver.FindElement(By.Name("user")).Clear();
-            driver.FindElement(By.Name("user")).SendKeys(username);
+            driver.FindElement(By.Name("user")).SendKeys(account.Username);
             driver.FindElement(By.XPath("//*/text()[normalize-space(.)='']/parent::*")).Click();
             driver.FindElement(By.Name("pass")).Click();
             driver.FindElement(By.Name("pass")).Clear();
-            driver.FindElement(By.Name("pass")).SendKeys(password);
+            driver.FindElement(By.Name("pass")).SendKeys(account.Password);
             driver.FindElement(By.XPath("//input[@value='Login']")).Click();
         }
 
