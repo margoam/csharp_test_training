@@ -10,7 +10,7 @@ using OpenQA.Selenium.Support.UI;
 namespace addressbook_web_tests
 {
     [TestFixture] // attribute
-    public class GroupCreationTests 
+    public class GroupCreationTests : Initialization
     {
         
 
