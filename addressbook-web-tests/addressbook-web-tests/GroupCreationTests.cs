@@ -46,7 +46,7 @@ namespace addressbook_web_tests
             Login(new AccountData("admin", "secret"));
             GoToGroupsPage();
             CreationNewGroup();
-            FillGroupform("test_name", "test_header", "test_footer");
+            FillGroupform(new GroupData("name", "header", "footer"));
             SubmitGroupCreation();
             LogOut();
 
@@ -62,17 +62,17 @@ namespace addressbook_web_tests
             driver.FindElement(By.Name("submit")).Click();
         }
 
-        private void FillGroupform(string name, string header, string footer)
+        private void FillGroupform(GroupData groupdata)
         {
             driver.FindElement(By.Name("group_name")).Click();
             driver.FindElement(By.Name("group_name")).Clear();
-            driver.FindElement(By.Name("group_name")).SendKeys(name);
+            driver.FindElement(By.Name("group_name")).SendKeys(groupdata.Name);
             driver.FindElement(By.Name("group_header")).Click();
             driver.FindElement(By.Name("group_header")).Clear();
-            driver.FindElement(By.Name("group_header")).SendKeys(header);
+            driver.FindElement(By.Name("group_header")).SendKeys(groupdata.Header);
             driver.FindElement(By.Name("group_footer")).Click();
             driver.FindElement(By.Name("group_footer")).Clear();
-            driver.FindElement(By.Name("group_footer")).SendKeys(footer);
+            driver.FindElement(By.Name("group_footer")).SendKeys(groupdata.Footer);
         }
 
         private void CreationNewGroup()
