@@ -54,6 +54,7 @@ namespace addressbook_web_tests
         public void OpenHomePage()
         {
             driver.Navigate().GoToUrl(baseURL);
+            Thread.Sleep(1000);
         }
 
 

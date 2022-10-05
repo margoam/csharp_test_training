@@ -13,17 +13,22 @@ namespace addressbook_web_tests
         private string company;
         private string address;
         private string homeTel;
-        private string mobileTel;
+        private string mobTel;
         private string workTel;
   
-        public ContactData(string firstname, string lastname, string company,
-            string address, string homeTel)
+        public ContactData(string firstname, string middlename, string lastname,
+            string nickname, string company, string address, string homeTel,
+            string mobTel, string workTel)
         {
             this.firstname = firstname;
+            this.middlename = middlename;
             this.lastname = lastname;
+            this.nickname = nickname;
             this.company = company;
             this.address = address;
             this.homeTel = homeTel;
+            this.mobTel = mobTel;
+            this.workTel = workTel;
         }
 
         public string Firstname
@@ -113,11 +118,11 @@ namespace addressbook_web_tests
         {
             get
             {
-                return mobileTel;
+                return mobTel;
             }
             set
             {
-                mobileTel = value;
+                mobTel = value;
             }
         }
 

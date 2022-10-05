@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using NUnit.Framework;
+using NUnit.Framework.Internal.Execution;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
@@ -19,7 +21,10 @@ namespace addressbook_web_tests
             OpenHomePage();
             Login(new AccountData("admin", "secret"));
             GoToContactCreationpage();
-            FillContactForm(new ContactData("First_name", "Last_name", "Company", "Address", "1123123"));
+            FillContactForm(new ContactData(firstname:"First_name", middlename:"Middle_name",
+            lastname:"Last name",nickname:"Nick name", company: "Company name",
+            address: "Address test", homeTel: "1231231231home", mobTel:"12312312mob",
+            workTel: "12312312312work"));
             SubmitContactCreation();
             LogOut();
         }
