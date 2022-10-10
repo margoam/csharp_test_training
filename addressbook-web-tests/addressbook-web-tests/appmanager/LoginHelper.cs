@@ -1,5 +1,4 @@
 ﻿using System;
-using NUnit.Framework;
 using OpenQA.Selenium;
 
 namespace addressbook_web_tests
