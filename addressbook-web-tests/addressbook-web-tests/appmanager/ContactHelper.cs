@@ -8,12 +8,18 @@ namespace addressbook_web_tests
     public class ContactHelper : HelperBase
 
     {
-        public ContactHelper(IWebDriver driver)
-         : base(driver)
+        public ContactHelper(ApplicationManager manager)
+         : base(manager)
         {
         }
 
-
+        public ContactHelper CreateContact(ContactData contact)
+        {
+            manager.Navigation.GoToContactCreationpage();
+            FillContactForm(contact);
+           SubmitContactCreation();
+            return this;
+        }
         public ContactHelper FillContactForm(ContactData contactdata)
         {
             driver.FindElement(By.Name("firstname")).Click();

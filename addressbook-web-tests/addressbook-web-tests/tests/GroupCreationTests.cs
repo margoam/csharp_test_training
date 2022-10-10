@@ -14,13 +14,9 @@ namespace addressbook_web_tests
         [Test]
         public void GroupCreationTest()
         {
-            app.Navigation.OpenHomePage();
-            app.Auth.Login(new AccountData("admin", "secret"));
-            app.Navigation.GoToGroupsPage();
-            app.Groups
-                .CreationNewGroup()
-                .FillGroupform(new GroupData("name", "header", "footer"))
-                .SubmitGroupCreation();
+            GroupData group = new GroupData("name", "header", "footer");
+            
+            app.Groups.CreateGroup(group);
             app.Auth.LogOut();
 
         }
