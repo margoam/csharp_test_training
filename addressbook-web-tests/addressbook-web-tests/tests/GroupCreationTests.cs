@@ -17,9 +17,10 @@ namespace addressbook_web_tests
             app.Navigation.OpenHomePage();
             app.Auth.Login(new AccountData("admin", "secret"));
             app.Navigation.GoToGroupsPage();
-            app.Groups.CreationNewGroup();
-            app.Groups.FillGroupform(new GroupData("name", "header", "footer"));
-            app.Groups.SubmitGroupCreation();
+            app.Groups
+                .CreationNewGroup()
+                .FillGroupform(new GroupData("name", "header", "footer"))
+                .SubmitGroupCreation();
             app.Auth.LogOut();
 
         }

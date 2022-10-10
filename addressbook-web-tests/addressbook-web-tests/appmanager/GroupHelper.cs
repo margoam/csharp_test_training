@@ -13,16 +13,18 @@ namespace addressbook_web_tests
         {
         }
 
-        public void CreationNewGroup()
+        public GroupHelper CreationNewGroup()
                 {
                     driver.FindElement(By.Name("new")).Click();
+            return this;
                 }
-        public void SubmitGroupCreation()
+        public GroupHelper SubmitGroupCreation()
         {
             driver.FindElement(By.Name("submit")).Click();
+            return this;
         }
 
-        public void FillGroupform(GroupData groupdata)
+        public GroupHelper FillGroupform(GroupData groupdata)
         {
             driver.FindElement(By.Name("group_name")).Click();
             driver.FindElement(By.Name("group_name")).Clear();
@@ -33,6 +35,7 @@ namespace addressbook_web_tests
             driver.FindElement(By.Name("group_footer")).Click();
             driver.FindElement(By.Name("group_footer")).Clear();
             driver.FindElement(By.Name("group_footer")).SendKeys(groupdata.Footer);
+            return this;
         }
     }
 }

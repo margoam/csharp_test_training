@@ -14,7 +14,7 @@ namespace addressbook_web_tests
         }
 
 
-        public void FillContactForm(ContactData contactdata)
+        public ContactHelper FillContactForm(ContactData contactdata)
         {
             driver.FindElement(By.Name("firstname")).Click();
             driver.FindElement(By.Name("firstname")).Clear();
@@ -43,12 +43,15 @@ namespace addressbook_web_tests
             driver.FindElement(By.Name("work")).Click();
             driver.FindElement(By.Name("work")).Clear();
             driver.FindElement(By.Name("work")).SendKeys(contactdata.WorkTel);
+            return this;
         }
 
-        public void SubmitContactCreation()
+        public ContactHelper SubmitContactCreation()
                 {
                     driver.FindElement(By.XPath("//div[@id='content']/form/input[21]")).Click();
+            return this;
                 }
+        
 
  
     }
