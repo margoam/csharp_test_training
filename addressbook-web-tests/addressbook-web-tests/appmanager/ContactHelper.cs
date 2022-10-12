@@ -85,13 +85,13 @@ namespace addressbook_web_tests
             manager.Navigation.OpenHomePage();
             SelectContact(p);
             RemoveContact();
-
             return this;
         }
 
         private ContactHelper RemoveContact()
         {
             driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
+            driver.SwitchTo().Alert().Accept();
             return this;
         }
 
