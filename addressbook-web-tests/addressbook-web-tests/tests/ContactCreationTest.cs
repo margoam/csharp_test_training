@@ -22,7 +22,7 @@ namespace addressbook_web_tests
 
             
             app.Contacts.CreateContact(contact);
-            app.Auth.LogOut();
+           
         }
 
 

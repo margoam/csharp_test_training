@@ -51,15 +51,59 @@ namespace addressbook_web_tests
             driver.FindElement(By.Name("work")).SendKeys(contactdata.WorkTel);
             return this;
         }
+        internal ContactHelper Modify(int p, ContactData contact)
+        {
+            manager.Navigation.OpenHomePage();
+            SelectContact(p);
+            EditContact();
+            FillContactForm(contact);
+            SubmitContactUpdate();
+            return this;
+        }
+
+        private ContactHelper SubmitContactUpdate()
+        {
+            driver.FindElement(By.XPath("//div[@id='content']/form/input[22]")).Click();
+            return this;
+        }
+
+        private ContactHelper EditContact()
+        {
+            driver.FindElement(By.XPath("//img[@alt='Edit']")).Click();
+            
+            return this;
+        }
 
         public ContactHelper SubmitContactCreation()
                 {
                     driver.FindElement(By.XPath("//div[@id='content']/form/input[21]")).Click();
             return this;
                 }
-        
 
- 
+        public ContactHelper Remove(int p)
+        {
+            manager.Navigation.OpenHomePage();
+            SelectContact(p);
+            RemoveContact();
+
+            return this;
+        }
+
+        private ContactHelper RemoveContact()
+        {
+            driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
+            return this;
+        }
+
+        private ContactHelper SelectContact(int p)
+        {
+            driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + p + "]")).Click();
+            return this;
+        }
+
+        
     }
 }
+
+
 
