@@ -22,33 +22,16 @@ namespace addressbook_web_tests
         }
         public ContactHelper FillContactForm(ContactData contactdata)
         {
-            driver.FindElement(By.Name("firstname")).Click();
-            driver.FindElement(By.Name("firstname")).Clear();
-            driver.FindElement(By.Name("firstname")).SendKeys(contactdata.Firstname);
-            driver.FindElement(By.Name("middlename")).Click();
-            driver.FindElement(By.Name("middlename")).Clear();
-            driver.FindElement(By.Name("middlename")).SendKeys(contactdata.Middlename);
-            driver.FindElement(By.Name("lastname")).Click();
-            driver.FindElement(By.Name("lastname")).Clear();
-            driver.FindElement(By.Name("lastname")).SendKeys(contactdata.Lastname);
-            driver.FindElement(By.Name("nickname")).Click();
-            driver.FindElement(By.Name("nickname")).Clear();
-            driver.FindElement(By.Name("nickname")).SendKeys(contactdata.Nickname);
-            driver.FindElement(By.Name("company")).Click();
-            driver.FindElement(By.Name("company")).Clear();
-            driver.FindElement(By.Name("company")).SendKeys(contactdata.Company);
-            driver.FindElement(By.Name("address")).Click();
-            driver.FindElement(By.Name("address")).Clear();
-            driver.FindElement(By.Name("address")).SendKeys(contactdata.Address);
-            driver.FindElement(By.Name("home")).Click();
-            driver.FindElement(By.Name("home")).Clear();
-            driver.FindElement(By.Name("home")).SendKeys(contactdata.Hometel);
-            driver.FindElement(By.Name("mobile")).Click();
-            driver.FindElement(By.Name("mobile")).Clear();
-            driver.FindElement(By.Name("mobile")).SendKeys(contactdata.MobTel);
-            driver.FindElement(By.Name("work")).Click();
-            driver.FindElement(By.Name("work")).Clear();
-            driver.FindElement(By.Name("work")).SendKeys(contactdata.WorkTel);
+            Type(By.Name("firstname"), contactdata.Firstname);
+            Type(By.Name("middlename"), contactdata.Middlename);
+            Type(By.Name("lastname"), contactdata.Lastname);
+            Type(By.Name("nickname"), contactdata.Nickname);
+            Type(By.Name("company"), contactdata.Company);
+            Type(By.Name("address"), contactdata.Address);
+            Type(By.Name("home"), contactdata.Hometel);
+            Type(By.Name("mobile"), contactdata.MobTel);
+            Type(By.Name("work"), contactdata.WorkTel);
+
             return this;
         }
         internal ContactHelper Modify(int p, ContactData contact)

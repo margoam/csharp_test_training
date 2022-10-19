@@ -45,17 +45,13 @@ namespace addressbook_web_tests
 
         public GroupHelper FillGroupform(GroupData groupdata)
         {
-            driver.FindElement(By.Name("group_name")).Click();
-            driver.FindElement(By.Name("group_name")).Clear();
-            driver.FindElement(By.Name("group_name")).SendKeys(groupdata.Name);
-            driver.FindElement(By.Name("group_header")).Click();
-            driver.FindElement(By.Name("group_header")).Clear();
-            driver.FindElement(By.Name("group_header")).SendKeys(groupdata.Header);
-            driver.FindElement(By.Name("group_footer")).Click();
-            driver.FindElement(By.Name("group_footer")).Clear();
-            driver.FindElement(By.Name("group_footer")).SendKeys(groupdata.Footer);
+            Type(By.Name("group_name"), groupdata.Name);
+            Type(By.Name("group_header"), groupdata.Header);
+            Type(By.Name("group_footer"), groupdata.Footer);
             return this;
         }
+
+       
 
         public GroupHelper Remove(int p)
         {

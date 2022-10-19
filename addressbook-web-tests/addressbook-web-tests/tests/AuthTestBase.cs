@@ -1,19 +1,22 @@
 ﻿using System;
+using System;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using NUnit.Framework;
 namespace addressbook_web_tests.tests
 {
-    [TestFixture]
 
-    public class GroupRemovalTests : AuthTestBase
+    public class AuthTestBase : TestBase
     {
-        [Test]
-        public void GroupRemovalTest()
+        [SetUp]
+        public void SetupLogin()
         {
-            app.Groups.Remove(1);
+   
+            app.Auth.Login(new AccountData("admin", "secret"));
+
         }
+
     }
 }
 
