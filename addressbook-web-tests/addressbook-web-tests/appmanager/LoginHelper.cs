@@ -21,7 +21,8 @@ namespace addressbook_web_tests
                 }
                 LogOut();
             }
-                Type(By.Name("user"), account.Username);
+            Thread.Sleep(1000);
+            Type(By.Name("user"), account.Username);
                 
                 driver.FindElement(By.XPath("//*/text()[normalize-space(.)='']/parent::*")).Click();
                 Type(By.Name("pass"), account.Password);
@@ -31,7 +32,7 @@ namespace addressbook_web_tests
         public bool IsLoggedIn(AccountData account)
         {
             return IsLoggIn()
-            && driver.FindElement(By.Name("logout")).FindElement(By.TagName("b")).Text
+            && driver.FindElement(By.XPath("//div[@id='top']/form/b")).Text
             == "(" + account.Username + ")";
         }
 

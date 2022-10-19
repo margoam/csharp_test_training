@@ -19,6 +19,7 @@ namespace addressbook_web_tests.tests
             app = ApplicationManager.GetInstance();
 
         }
+
     }
 
 
