@@ -1,5 +1,5 @@
 ﻿using System;
-namespace addressbook_web_tests.tests
+namespace addressbook_web_tests
 {
     [TestFixture]
 
@@ -12,17 +12,18 @@ namespace addressbook_web_tests.tests
 
             AccountData account = new AccountData("admin", "secret");
             app.Auth.Login(account);
-            Assert.IsTrue(app.Auth.IsLoggedIn(account));
+            Assert.IsTrue(app.Auth.IsLoggIn(account));
         }
 
         [Test]
          public void LoginWithInValidCreds()
         {
             app.Auth.LogOut();
+            Thread.Sleep(1000);
 
             AccountData account = new AccountData("admin", "122345");
             app.Auth.Login(account);
-            Assert.IsFalse(app.Auth.IsLoggedIn(account));
+            Assert.IsFalse(app.Auth.IsLoggIn(account));
         }
     }
 }

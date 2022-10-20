@@ -4,11 +4,12 @@ using System.Text;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium.Chrome;
 
 namespace addressbook_web_tests
 {
-    
-    public class ApplicationManager
+
+    public class ApplicationManager 
     {
         protected IWebDriver driver;
         protected string baseURL;// field
@@ -30,17 +31,7 @@ namespace addressbook_web_tests
 
         }
 
-        ~ApplicationManager()
-        {
-            try
-            {
-                driver.Quit();
-            }
-            catch (Exception)
-            {
-           
-            }
-        }
+      
 
 
         public static ApplicationManager GetInstance()
@@ -53,6 +44,7 @@ namespace addressbook_web_tests
             }
             return app.Value;
         }
+
 
         public IWebDriver? Driver
         {
@@ -96,6 +88,21 @@ namespace addressbook_web_tests
             }
         }
 
+        ~ApplicationManager()
+        {
+            try
+            {
+               
+                driver.Quit();
+            }
+            catch (Exception)
+            {
+               
+            }
+        }
     }
+
 }
+       
+
 

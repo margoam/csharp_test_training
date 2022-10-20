@@ -34,9 +34,14 @@ namespace addressbook_web_tests
 
             return this;
         }
-        internal ContactHelper Modify(int p, ContactData contact)
+        internal ContactHelper Modify(int p, ContactData contact, ContactData contactData)
         {
             manager.Navigation.OpenHomePage();
+            if (!CountContacts())
+            {
+                CreateContact(contactData);
+                manager.Navigation.OpenHomePage();
+            }
             SelectContact(p);
             EditContact();
             FillContactForm(contact);
@@ -63,9 +68,14 @@ namespace addressbook_web_tests
             return this;
                 }
 
-        public ContactHelper Remove(int p)
+        public ContactHelper Remove(int p, ContactData contactData)
         {
             manager.Navigation.OpenHomePage();
+            if (!CountContacts())
+            {
+                CreateContact(contactData);
+                manager.Navigation.OpenHomePage();
+            }
             SelectContact(p);
             RemoveContact();
             return this;
@@ -84,7 +94,11 @@ namespace addressbook_web_tests
             return this;
         }
 
-        
+        public bool CountContacts()
+        {
+            return (driver.FindElements(By.XPath("(//input[@name='selected[]'])"))).Count > 0;
+
+        }
     }
 }
 

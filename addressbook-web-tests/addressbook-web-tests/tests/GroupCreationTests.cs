@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using NUnit.Framework;
 
-namespace addressbook_web_tests.tests
+namespace addressbook_web_tests
 {
     [TestFixture] // attribute
     public class GroupCreationTests : AuthTestBase
@@ -17,7 +17,7 @@ namespace addressbook_web_tests.tests
             GroupData group = new GroupData("name", "header", "footer");
             
             app.Groups.CreateGroup(group);
-            app.Auth.LogOut();
+         
 
         }
         

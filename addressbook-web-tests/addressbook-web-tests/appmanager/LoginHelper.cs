@@ -15,7 +15,7 @@ namespace addressbook_web_tests
             {
                 if (IsLoggIn())
             {
-                if (IsLoggedIn(account))
+                if (IsLoggIn(account))
                 {
                     return;
                 }
@@ -29,7 +29,7 @@ namespace addressbook_web_tests
                 driver.FindElement(By.XPath("//input[@value='Login']")).Click();
             }
 
-        public bool IsLoggedIn(AccountData account)
+        public bool IsLoggIn(AccountData account)
         {
             return IsLoggIn()
             && driver.FindElement(By.XPath("//div[@id='top']/form/b")).Text

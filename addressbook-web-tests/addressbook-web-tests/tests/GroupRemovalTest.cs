@@ -3,7 +3,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using NUnit.Framework;
-namespace addressbook_web_tests.tests
+namespace addressbook_web_tests
 {
     [TestFixture]
 
@@ -12,7 +12,9 @@ namespace addressbook_web_tests.tests
         [Test]
         public void GroupRemovalTest()
         {
-            app.Groups.Remove(1);
+            GroupData group = new GroupData("name_edited", "header_edited",
+                null);
+            app.Groups.Remove(1, group);
         }
     }
 }

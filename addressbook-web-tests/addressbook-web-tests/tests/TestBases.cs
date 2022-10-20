@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using NUnit.Framework;
 
-namespace addressbook_web_tests.tests
+namespace addressbook_web_tests
 {
     [TestFixture] // attribute
     public class TestBase
@@ -19,6 +19,7 @@ namespace addressbook_web_tests.tests
             app = ApplicationManager.GetInstance();
 
         }
+
 
     }
 

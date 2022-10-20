@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using NUnit.Framework.Internal.Execution;
 
-namespace addressbook_web_tests.tests
+namespace addressbook_web_tests
 {
     [TestFixture]
 
@@ -11,10 +11,12 @@ namespace addressbook_web_tests.tests
         [Test]
         public void GroupModificationTest()
         {
-            GroupData group = new GroupData("name_edited", "header_edited",
+            GroupData groupNew = new GroupData("name_edited", "header_edited",
                 null);
+            GroupData group = new GroupData("name_created", "header_created",
+                "footer_created");
 
-            app.Groups.Modify(1, group);
+            app.Groups.Modify(1, groupNew, group);
         }
     }
 }

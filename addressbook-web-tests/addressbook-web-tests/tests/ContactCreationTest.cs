@@ -6,7 +6,7 @@ using System.Threading;
 using NUnit.Framework;
 using NUnit.Framework.Internal.Execution;
 
-namespace addressbook_web_tests.tests
+namespace addressbook_web_tests
 {
     [TestFixture]
     public class ContactCreationtest : AuthTestBase
