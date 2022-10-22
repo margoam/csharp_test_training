@@ -1,6 +1,12 @@
 ﻿using System;
-namespace addressbook_web_tests.tests
-{
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
+using NUnit.Framework;
+
+namespace addressbook_web_tests
+{ 
+
     [SetUpFixture]
     public class TestSuitFixture
     {

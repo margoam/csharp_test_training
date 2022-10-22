@@ -21,12 +21,12 @@ namespace addressbook_web_tests
 
         public void OpenHomePage()
         {
-            if (driver.Url == baseURL + "/index.php" && IsElementPresent(By.LinkText("add new")))
+            if (driver.Url == baseURL + "/" && IsElementPresent(By.LinkText("add new")))
             {
                 return;
             }
             driver.Navigate().GoToUrl(baseURL);
-            Thread.Sleep(1000);
+           
         }
         public void GoToGroupsPage()
         {
