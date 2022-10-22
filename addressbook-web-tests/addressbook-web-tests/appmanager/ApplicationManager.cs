@@ -9,7 +9,7 @@ using OpenQA.Selenium.Chrome;
 namespace addressbook_web_tests
 {
 
-    public class ApplicationManager 
+    public class ApplicationManager
     {
         protected IWebDriver driver;
         protected string baseURL;// field
@@ -31,9 +31,6 @@ namespace addressbook_web_tests
 
         }
 
-      
-
-
         public static ApplicationManager GetInstance()
         {
             if (!app.IsValueCreated)
@@ -44,7 +41,18 @@ namespace addressbook_web_tests
             }
             return app.Value;
         }
+        public void Quit()
+        {
+            try
+            {
+                driver.Quit();
 
+            }
+            catch (Exception)
+            {
+                //
+            }
+        }
 
         public IWebDriver? Driver
         {
@@ -88,21 +96,7 @@ namespace addressbook_web_tests
             }
         }
 
-        ~ApplicationManager()
-        {
-            try
-            {
-               
-                driver.Quit();
-            }
-            catch (Exception)
-            {
-               
-            }
-        }
+       
     }
 
 }
-       
-
-
