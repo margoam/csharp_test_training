@@ -41,11 +41,11 @@ namespace addressbook_web_tests
             }
             return app.Value;
         }
-        public void Quit()
+        public void Stop()
         {
             try
             {
-                driver.Quit();
+                driver?.Quit();
 
             }
             catch (Exception)
@@ -53,6 +53,7 @@ namespace addressbook_web_tests
                 //
             }
         }
+
 
         public IWebDriver? Driver
         {

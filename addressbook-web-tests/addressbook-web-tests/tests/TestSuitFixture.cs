@@ -18,7 +18,7 @@ namespace addressbook_web_tests.tests
         [OneTimeTearDown]
         public void StopAppManager()
         {
-            ApplicationManager.GetInstance().Quit();
+            ApplicationManager.GetInstance().Stop();
 
 
         }
