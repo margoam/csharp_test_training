@@ -12,9 +12,13 @@ namespace addressbook_web_tests
         [Test]
         public void GroupRemovalTest()
         {
-            GroupData group = new GroupData("name_edited", "header_edited",
+            if (!app.Groups.CountGroups())
+            {
+                GroupData group = new GroupData("name_edited", "header_edited",
                 null);
-            app.Groups.Remove(1, group);
+                app.Groups.CreateGroup(group);
+            }
+            app.Groups.Remove(1);
         }
     }
 }

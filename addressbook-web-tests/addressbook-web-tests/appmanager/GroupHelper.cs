@@ -23,14 +23,9 @@ namespace addressbook_web_tests
         }
 
 
-        public GroupHelper Modify(int p, GroupData newData, GroupData group)
+        public GroupHelper Modify(int p, GroupData newData)
         {
             manager.Navigation.GoToGroupsPage();
-            if (!CountGroups())
-            {
-                CreateGroup(group);
-                manager.Navigation.GoToGroupsPage();
-            }
             SelectGroup(p);
             InitGroupModification();
             FillGroupform(newData);
@@ -58,14 +53,9 @@ namespace addressbook_web_tests
 
        
 
-        public GroupHelper Remove(int p, GroupData group)
+        public GroupHelper Remove(int p)
         {
             manager.Navigation.GoToGroupsPage();
-            if (!CountGroups())
-            {
-                CreateGroup(group);
-                manager.Navigation.GoToGroupsPage();
-            }
             SelectGroup(p);
             RemoveGroup(p);
 
@@ -104,6 +94,7 @@ namespace addressbook_web_tests
 
         public bool CountGroups()
         {
+            manager.Navigation.GoToGroupsPage();
             return (driver.FindElements(By.XPath("(//input[@name='selected[]'])"))).Count > 0;
             
         }

@@ -12,11 +12,16 @@ namespace addressbook_web_tests
         public void GroupModificationTest()
         {
             GroupData groupNew = new GroupData("name_edited", "header_edited",
-                null);
-            GroupData group = new GroupData("name_created", "header_created",
-                "footer_created");
+               null);
 
-            app.Groups.Modify(1, groupNew, group);
+            if (!app.Groups.CountGroups())
+            {
+                GroupData group = new GroupData("name_created", "header_created",
+               "footer_created");
+                app.Groups.CreateGroup(group);
+            }
+
+            app.Groups.Modify(1, groupNew);
         }
     }
 }
