@@ -21,7 +21,7 @@ namespace addressbook_web_tests
                 }
                 LogOut();
             }
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             Type(By.Name("user"), account.Username);
                 
                 driver.FindElement(By.XPath("//*/text()[normalize-space(.)='']/parent::*")).Click();

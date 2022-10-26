@@ -92,6 +92,22 @@ namespace addressbook_web_tests
             return (driver.FindElements(By.XPath("(//input[@name='selected[]'])"))).Count > 0;
 
         }
+
+        public List<ContactData> GetContactList()
+        {
+            List<ContactData> contacts = new List<ContactData>();
+            manager.Navigation.OpenHomePage();
+            Thread.Sleep(500);
+            ICollection<IWebElement> elements = driver.FindElements(By.XPath("//tr[@name='entry']"));
+            foreach (IWebElement element in elements)
+            {
+                
+                var lastName = element.FindElement(By.XPath("td[2]")).Text;
+                var firstName = element.FindElement(By.XPath("td[3]")).Text;
+                contacts.Add(new ContactData(lastName, firstName));
+            }
+            return contacts;
+        }
     }
 }
 

@@ -3,32 +3,22 @@ using System.Xml.Linq;
 
 namespace addressbook_web_tests
 {
-    public class ContactData
+    public class ContactData : IComparable<ContactData>
     {
-
         private string firstname;
-        private string middlename;
+        private string middlename = "";
         private string lastname;
-        private string nickname;
-        private string company;
-        private string address;
-        private string homeTel;
-        private string mobTel;
-        private string workTel;
+        private string nickname = "";
+        private string company = "";
+        private string address = "";
+        private string homeTel = "";
+        private string mobTel = "";
+        private string workTel = "";
   
-        public ContactData(string firstname, string middlename, string lastname,
-            string nickname, string company, string address, string homeTel,
-            string mobTel, string workTel)
+        public ContactData(string lastname, string firstname)
         {
             this.firstname = firstname;
-            this.middlename = middlename;
             this.lastname = lastname;
-            this.nickname = nickname;
-            this.company = company;
-            this.address = address;
-            this.homeTel = homeTel;
-            this.mobTel = mobTel;
-            this.workTel = workTel;
         }
 
         public string Firstname
@@ -137,6 +127,34 @@ namespace addressbook_web_tests
                 workTel = value;
             }
         }
+        public int CompareTo(ContactData? other)
+        {
+            if (ReferenceEquals(other, null))
+                return 1;
+            return String.Compare((Lastname + Firstname), other.Lastname + other.Firstname, StringComparison.Ordinal);
+        }
+
+        public bool Equals(ContactData other)
+        {
+            if (ReferenceEquals(other, null))
+            {
+                return false;
+            }
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+            return Lastname == other.Lastname && Firstname == other.Firstname;
+           
+
+        }
+
+        public override string ToString()
+        {
+            return Lastname + " " + Firstname;
+           
+        }
+        
     }
 }
 

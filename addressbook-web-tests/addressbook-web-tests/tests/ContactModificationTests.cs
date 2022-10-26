@@ -9,20 +9,30 @@ namespace addressbook_web_tests
         {
             if (!app.Contacts.CountContacts())
             {
-                ContactData contact = new ContactData(firstname: "First_name", middlename: "Middle_name",
-          lastname: "Last name", nickname: "Nick name", company: "Company name",
-          address: "Address test", homeTel: "1231231231home", mobTel: "12312312mob",
-          workTel: "12312312312work");
+                ContactData contact = new ContactData(firstname: "First_name",
+            lastname: "Last name");
+                contact.Middlename = "Middle_name";
+                contact.Nickname = "Nick name";
+                contact.Company = "Company name";
+                contact.Address = "Address test";
                 app.Contacts.CreateContact(contact);
             }
 
-            ContactData contactnew = new ContactData(firstname: "First_name2", middlename: "Middle_name2",
-            lastname: "Last name2", nickname: "Nick name2", company: "Company name2",
-            address: "Address test2", homeTel: "1231231231home2", mobTel: "12312312mob2",
-            workTel: "12312312312work2");
+            ContactData contactnew = new ContactData(firstname: "First_name edit",
+            lastname: "Last name edit");
+            contactnew.Company = "Company name edit";
+            contactnew.Address = "Address test edit";
 
+            List<ContactData> oldContacts = app.Contacts.GetContactList();
 
             app.Contacts.Modify(1, contactnew);
+
+            List<ContactData> newContacts = app.Contacts.GetContactList();
+            oldContacts[0].Firstname = contactnew.Firstname;
+            oldContacts[0].Lastname = contactnew.Lastname;
+            oldContacts.Sort();
+            newContacts.Sort();
+            Assert.AreEqual(oldContacts, newContacts);
         }
     }
 }

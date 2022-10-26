@@ -15,6 +15,7 @@ namespace addressbook_web_tests
 
         public GroupHelper CreateGroup(GroupData group)
         {
+            Thread.Sleep(250);
             manager.Navigation.GoToGroupsPage();
             CreationNewGroup();
             FillGroupform(group);
@@ -97,6 +98,18 @@ namespace addressbook_web_tests
             manager.Navigation.GoToGroupsPage();
             return (driver.FindElements(By.XPath("(//input[@name='selected[]'])"))).Count > 0;
             
+        }
+
+        public List<GroupData> GetGroupList()
+        {
+            List<GroupData> groups = new List<GroupData>();
+            manager.Navigation.GoToGroupsPage();
+            ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("span.group"));
+            foreach (IWebElement element in elements)
+            {
+                groups.Add(new GroupData(element.Text));
+            }
+            return groups;
         }
     }
 }

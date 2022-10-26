@@ -39,6 +39,7 @@ namespace addressbook_web_tests
 
         public void GoToContactCreationpage()
         {
+            Thread.Sleep(250);
             driver.FindElement(By.LinkText("add new")).Click();
         }
     }

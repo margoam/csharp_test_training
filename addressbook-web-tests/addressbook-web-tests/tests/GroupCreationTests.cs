@@ -14,10 +14,18 @@ namespace addressbook_web_tests
         [Test]
         public void GroupCreationTest()
         {
-            GroupData group = new GroupData("name", "header", "footer");
+            GroupData group = new GroupData("name");
+            group.Header = "header";
+            group.Footer = "footer";
+            List<GroupData> oldGroups = app.Groups.GetGroupList();
             
             app.Groups.CreateGroup(group);
-         
+
+            List<GroupData> newGroups = app.Groups.GetGroupList();
+            oldGroups.Add(group);
+            oldGroups.Sort();
+            newGroups.Sort();
+            Assert.AreEqual(oldGroups, newGroups);
 
         }
         
