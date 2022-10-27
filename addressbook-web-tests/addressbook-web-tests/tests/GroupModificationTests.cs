@@ -14,7 +14,7 @@ namespace addressbook_web_tests
             GroupData groupNew = new GroupData("name_edited");
             groupNew.Header = "header";
             groupNew.Footer = "footer";
-            List<GroupData> oldGroups = app.Groups.GetGroupList();
+           
 
             if (!app.Groups.CountGroups())
             {
@@ -23,6 +23,8 @@ namespace addressbook_web_tests
                 group.Footer = "footer";
                 app.Groups.CreateGroup(group);
             }
+            List<GroupData> oldGroups = app.Groups.GetGroupList();
+            GroupData oldData = oldGroups[0];
 
             app.Groups.Modify(1, groupNew);
             List<GroupData> newGroups = app.Groups.GetGroupList();
@@ -30,6 +32,14 @@ namespace addressbook_web_tests
             oldGroups.Sort();
             newGroups.Sort();
             Assert.AreEqual(oldGroups, newGroups);
+
+            foreach (GroupData group in newGroups)
+            {
+                if (group.Id == oldData.Id)
+                {
+                    Assert.AreEqual(groupNew.Name, oldData.Name);
+                }
+            }
         }
     }
 }

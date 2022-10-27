@@ -24,12 +24,20 @@ namespace addressbook_web_tests
             List<GroupData> oldGroups = app.Groups.GetGroupList();
       
             app.Groups.Remove(1);
+
+            Assert.AreEqual(oldGroups.Count - 1, app.Groups.GetCountGroups());
+            GroupData toBeRemoved = oldGroups[0];
             oldGroups.Remove(oldGroups[0]);
             List<GroupData> newGroups = app.Groups.GetGroupList();
          
             oldGroups.Sort();
             newGroups.Sort();
             Assert.AreEqual(oldGroups, newGroups);
+
+            foreach (GroupData group in newGroups)
+            {
+                Assert.AreNotEqual(group.Id, toBeRemoved.Id);
+            }
         }
     }
 }

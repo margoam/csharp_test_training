@@ -5,128 +5,34 @@ namespace addressbook_web_tests
 {
     public class ContactData : IComparable<ContactData>
     {
-        private string firstname;
-        private string middlename = "";
-        private string lastname;
-        private string nickname = "";
-        private string company = "";
-        private string address = "";
-        private string homeTel = "";
-        private string mobTel = "";
-        private string workTel = "";
+      
   
         public ContactData(string lastname, string firstname)
         {
-            this.firstname = firstname;
-            this.lastname = lastname;
+            Firstname = firstname;
+            Lastname = lastname;
         }
 
-        public string Firstname
-        {
-            get
-            {
-                return firstname;
-            }
-            set
-            {
-                firstname = value;
-            }
-        }
+        public string Id { get; set; }
 
-        public string Middlename
-        {
-            get
-            {
-                return middlename;
-            }
-            set
-            {
-                middlename = value;
-            }
-        }
-        public string Lastname
-        {
-            get
-            {
-                return lastname;
-            }
-            set
-            {
-                lastname = value;
-            }
-        }
+        public string Firstname { get; set; }
 
-        public string Nickname
-        {
-            get
-            {
-                return nickname;
-            }
-            set
-            {
-                nickname = value;
-            }
-        }
+        public string Middlename { get; set; }
 
-        public string Company
-        {
-            get
-            {
-                return company;
-            }
-            set
-            {
-                company = value;
-            }
-        }
+        public string Lastname { get; set; }
 
-        public string Address
-        {
-            get
-            {
-                return address;
-            }
-            set
-            {
-                address = value;
-            }
-        }
+        public string Nickname { get; set; }
 
-        public string Hometel
-        {
-            get
-            {
-                return homeTel;
-            }
-            set
-            {
-                homeTel = value;
-            }
-        }
+        public string Company { get; set; }
 
-        public string MobTel
-        {
-            get
-            {
-                return mobTel;
-            }
-            set
-            {
-                mobTel = value;
-            }
-        }
+        public string Address { get; set; }
 
-        public string WorkTel
-        {
-            get
-            {
-                return workTel;
-            }
-            set
-            {
-                workTel = value;
-            }
-        }
+        public string Hometel { get; set; }
+
+        public string MobTel { get; set; }
+
+        public string WorkTel { get; set; }
+
         public int CompareTo(ContactData? other)
         {
             if (ReferenceEquals(other, null))
