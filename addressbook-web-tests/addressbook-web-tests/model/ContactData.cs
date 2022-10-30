@@ -3,7 +3,7 @@ using System.Xml.Linq;
 
 namespace addressbook_web_tests
 {
-    public class ContactData : IComparable<ContactData>
+    public class ContactData : IEquatable<ContactData>, IComparable<ContactData>
     {
       
   
@@ -33,11 +33,12 @@ namespace addressbook_web_tests
 
         public string WorkTel { get; set; }
 
-        public int CompareTo(ContactData? other)
+        public int CompareTo(ContactData other)
         {
             if (ReferenceEquals(other, null))
                 return 1;
-            return String.Compare((Lastname + Firstname), other.Lastname + other.Firstname, StringComparison.Ordinal);
+                return String.Compare((Lastname + Firstname),
+                other.Lastname + other.Firstname, StringComparison.Ordinal);
         }
 
         public bool Equals(ContactData other)
@@ -58,9 +59,10 @@ namespace addressbook_web_tests
         public override string ToString()
         {
             return Lastname + " " + Firstname;
-           
+
         }
-        
+
+        public override int GetHashCode() => Tuple.Create(Firstname, Lastname).GetHashCode();
     }
 }
 

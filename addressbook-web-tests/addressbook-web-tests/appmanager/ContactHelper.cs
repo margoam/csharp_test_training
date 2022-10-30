@@ -76,14 +76,16 @@ namespace addressbook_web_tests
         private ContactHelper RemoveContact()
         {
             driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
-            driver.SwitchTo().Alert().Accept();
             contactCache = null;
+            driver.SwitchTo().Alert().Accept();
+            Thread.Sleep(250);
+            driver.FindElement(By.CssSelector("div.msgbox"));
             return this;
         }
 
         private ContactHelper SelectContact(int p)
         {
-            manager.Navigation.OpenHomePage();
+           
             Thread.Sleep(500);
             driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + p + "]")).Click();
             return this;
@@ -100,7 +102,7 @@ namespace addressbook_web_tests
         public int GetCountContacts()
         {
             manager.Navigation.OpenHomePage();
-            Thread.Sleep(250);
+            Thread.Sleep(500);
             return driver.FindElements(By.XPath("(//input[@name='selected[]'])")).Count;
 
         }
@@ -117,13 +119,16 @@ namespace addressbook_web_tests
                 ICollection<IWebElement> elements = driver.FindElements(By.XPath("//tr[@name='entry']"));
                 foreach (IWebElement element in elements)
                 {
-
                     var lastName = element.FindElement(By.XPath("td[2]")).Text;
                     var firstName = element.FindElement(By.XPath("td[3]")).Text;
-                    contactCache.Add(new ContactData(lastName, firstName));
+                
+                   
+                    contactCache.Add(new ContactData(lastName, firstName)
+                    {
+                        Id = element.FindElement(By.Name("selected[]")).GetAttribute("value")
+                    });
                 }
             }
-           
             return new List<ContactData>(contactCache);
         }
     }
