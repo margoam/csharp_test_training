@@ -32,8 +32,13 @@ namespace addressbook_web_tests
         public bool IsLoggIn(AccountData account)
         {
             return IsLoggIn()
-            && driver.FindElement(By.XPath("//div[@id='top']/form/b")).Text
-            == "(" + account.Username + ")";
+            && GetLoggedUserName() == account.Username;
+        }
+
+        public string GetLoggedUserName()
+        {
+            string text = driver.FindElement(By.XPath("//div[@id='top']/form/b")).Text;
+            return text.Substring(1, text.Length - 2);
         }
 
         public bool IsLoggIn()

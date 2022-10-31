@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
 namespace addressbook_web_tests
@@ -12,6 +13,10 @@ namespace addressbook_web_tests
             Firstname = firstname;
             Lastname = lastname;
         }
+
+        private string allPhones;
+
+        private string allEmails;
 
         public string Id { get; set; }
 
@@ -29,9 +34,63 @@ namespace addressbook_web_tests
 
         public string Hometel { get; set; }
 
+        public string Fax { get; set; }
+
         public string MobTel { get; set; }
 
         public string WorkTel { get; set; }
+
+        public string Email { get; set; }
+
+        public string Email2 { get; set; }
+
+        public string Email3 { get; set; }
+
+        public string AllPhones
+        {
+            get
+            {
+                if (allPhones != null)
+                {
+                    return allPhones;
+                }
+
+                else
+                {
+                    return (CleanUp(Hometel) + CleanUp(MobTel) + CleanUp(WorkTel) + CleanUp(Fax))
+                        .Trim();
+                }
+            }
+            set => allPhones = CleanUp(value);
+        }
+
+        public string AllEmails
+        {
+            get
+            {
+                if (allEmails != null || allEmails == "")
+                {
+                    return allEmails;
+                }
+                else
+                {
+                    return (CleanUp(Email) + CleanUp(Email2) + CleanUp(Email3)).Trim();
+                }
+            }
+            set => allEmails = CleanUp(value);
+        }
+
+        private string CleanUp(string value)
+        {
+            if (value == null)
+            {
+                return "";
+            }
+            else
+            {
+                return Regex.Replace(value, @"[ \-(\n\r)]", "");
+            }
+        }
 
         public int CompareTo(ContactData other)
         {
