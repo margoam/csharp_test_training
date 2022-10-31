@@ -14,6 +14,10 @@ namespace addressbook_web_tests
             Lastname = lastname;
         }
 
+        public ContactData() { }
+
+        private string allInformation;
+
         private string allPhones;
 
         private string allEmails;
@@ -46,7 +50,28 @@ namespace addressbook_web_tests
 
         public string Email3 { get; set; }
 
-        public string AllPhones
+        public string Notes { get; set; }
+
+        public string AllInformation
+        {
+            get
+            {
+                if (allInformation != null)
+                {
+                    return allInformation;
+                }
+                else
+                {
+                    return $"{CleanUp(Lastname)}{CleanUp(Middlename)}{CleanUp(Firstname)}" +
+                        $"{CleanUp(Nickname)}{CleanUp(Company)}{CleanUp(Address)}" +
+                        $"{CleanUp(Hometel)}{CleanUp(MobTel)}{CleanUp(WorkTel)}" +
+                        $"{CleanUp(Fax)}{CleanUp(Email)}{CleanUp(Email2)}{CleanUp(Email3)}";
+                }
+            }
+            set => allInformation = CleanUp(value);
+        }
+
+public string AllPhones
         {
             get
             {
