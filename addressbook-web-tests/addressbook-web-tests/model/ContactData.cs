@@ -56,19 +56,19 @@ namespace addressbook_web_tests
         {
             get
             {
-                if (allInformation != null)
+                if (allInformation != null || allInformation == "")
                 {
                     return allInformation;
                 }
                 else
                 {
-                    return $"{CleanUp(Lastname)}{CleanUp(Middlename)}{CleanUp(Firstname)}" +
-                        $"{CleanUp(Nickname)}{CleanUp(Company)}{CleanUp(Address)}" +
-                        $"{CleanUp(Hometel)}{CleanUp(MobTel)}{CleanUp(WorkTel)}" +
-                        $"{CleanUp(Fax)}{CleanUp(Email)}{CleanUp(Email2)}{CleanUp(Email3)}";
+                    return $"{CleanUpForAllInformation(Lastname)}{CleanUpForAllInformation(Middlename)}{CleanUpForAllInformation(Firstname)}" +
+                        $"{CleanUpForAllInformation(Nickname)}{CleanUpForAllInformation(Company)}{CleanUpForAllInformation(Address)}" +
+                        $"{CleanUpForAllInformation(Hometel)}{CleanUpForAllInformation(MobTel)}{CleanUpForAllInformation(WorkTel)}" +
+                        $"{CleanUpForAllInformation(Fax)}{CleanUpForAllInformation(Email)}{CleanUpForAllInformation(Email2)}{CleanUpForAllInformation(Email3)}";
                 }
             }
-            set => allInformation = CleanUp(value);
+            set => allInformation = CleanUpForAllInformation(value);
         }
 
 public string AllPhones
@@ -105,6 +105,18 @@ public string AllPhones
             set => allEmails = CleanUp(value);
         }
 
+        private string CleanUpForAllInformation(string value)
+        {
+            if (value == null || value == "")
+            {
+                return "";
+            }
+            else
+            {
+                return Regex.Replace(value, @"[ \-()\r\n]", "");
+            }
+        }
+
         private string CleanUp(string value)
         {
             if (value == null || value == "")
@@ -113,7 +125,7 @@ public string AllPhones
             }
             else
             {
-                return Regex.Replace(value, @"[ \-()]", "") + "\r\n";
+                return Regex.Replace(value, @"[ \-()\r]", "");
             }
         }
 

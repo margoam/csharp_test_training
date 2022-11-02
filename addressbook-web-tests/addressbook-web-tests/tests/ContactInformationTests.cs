@@ -22,7 +22,7 @@ namespace addressbook_web_tests
         [Test]
         public void TestContactViewInformation()
         {
-            ContactData fromForm = app.Contacts.GetContactInformationFromEditForm(0);
+            ContactData fromForm = app.Contacts.GetContactInformationFromEditForm(0, true);
             ContactData fromViewForm = app.Contacts.GetContactInfoFromViewForm(0);
 
             Assert.AreEqual(fromForm.AllInformation, fromViewForm.AllInformation);

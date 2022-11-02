@@ -159,7 +159,7 @@ namespace addressbook_web_tests
             };
         }
 
-        public ContactData GetContactInformationFromEditForm(int index)
+        public ContactData GetContactInformationFromEditForm(int index, bool ForViewPage = false)
         {
             manager.Navigation.OpenHomePage();
             InitContactModification(index);
@@ -174,6 +174,19 @@ namespace addressbook_web_tests
             string mobilePhone = driver.FindElement(By.Name("mobile")).GetAttribute("value");
             string workPhone = driver.FindElement(By.Name("work")).GetAttribute("value");
             string faxPhone = driver.FindElement(By.Name("fax")).GetAttribute("value");
+
+            if (ForViewPage)
+            {
+                if (homePhone != "")
+                { homePhone = "H:" + homePhone; }
+                if (mobilePhone != "")
+                { mobilePhone = "M:" + mobilePhone;
+            }
+                if (workPhone != "")
+                { workPhone = "W:" + workPhone; }
+                if (faxPhone != "")
+                { faxPhone = "F:" + faxPhone; }
+            }
 
             string email = driver.FindElement(By.Name("email")).GetAttribute("value");
             string email2 = driver.FindElement(By.Name("email2")).GetAttribute("value");
