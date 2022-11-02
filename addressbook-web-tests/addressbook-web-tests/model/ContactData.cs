@@ -107,13 +107,13 @@ public string AllPhones
 
         private string CleanUp(string value)
         {
-            if (value == null)
+            if (value == null || value == "")
             {
                 return "";
             }
             else
             {
-                return Regex.Replace(value, @"[ \-(\r)]", "");
+                return Regex.Replace(value, @"[ \-()]", "") + "\r\n";
             }
         }
 
