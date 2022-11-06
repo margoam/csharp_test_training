@@ -1,0 +1,156 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/ritaamosova/Projects/csharp_test_training/addressbook-web-tests/address-web-test-data-generators/address-web-test-data-generators.csproj": {}
+  },
+  "projects": {
+    "/Users/ritaamosova/Projects/csharp_test_training/addressbook-web-tests/address-web-test-data-generators/address-web-test-data-generators.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ritaamosova/Projects/csharp_test_training/addressbook-web-tests/address-web-test-data-generators/address-web-test-data-generators.csproj",
+        "projectName": "address-web-test-data-generators",
+        "projectPath": "/Users/ritaamosova/Projects/csharp_test_training/addressbook-web-tests/address-web-test-data-generators/address-web-test-data-generators.csproj",
+        "packagesPath": "/Users/ritaamosova/.nuget/packages/",
+        "outputPath": "/Users/ritaamosova/Projects/csharp_test_training/addressbook-web-tests/address-web-test-data-generators/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/ritaamosova/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/ritaamosova/Projects/csharp_test_training/addressbook-web-tests/addressbook-web-tests/addressbook-web-tests.csproj": {
+                "projectPath": "/Users/ritaamosova/Projects/csharp_test_training/addressbook-web-tests/addressbook-web-tests/addressbook-web-tests.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.401/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/ritaamosova/Projects/csharp_test_training/addressbook-web-tests/addressbook-web-tests/addressbook-web-tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ritaamosova/Projects/csharp_test_training/addressbook-web-tests/addressbook-web-tests/addressbook-web-tests.csproj",
+        "projectName": "addressbook-web-tests",
+        "projectPath": "/Users/ritaamosova/Projects/csharp_test_training/addressbook-web-tests/addressbook-web-tests/addressbook-web-tests.csproj",
+        "packagesPath": "/Users/ritaamosova/.nuget/packages/",
+        "outputPath": "/Users/ritaamosova/Projects/csharp_test_training/addressbook-web-tests/addressbook-web-tests/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/ritaamosova/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.3.2, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.13.3, )"
+            },
+            "NUnit.Analyzers": {
+              "target": "Package",
+              "version": "[3.3.0, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[4.2.1, )"
+            },
+            "NUnitTestAdapter": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            },
+            "Selenium.Support": {
+              "target": "Package",
+              "version": "[4.5.1, )"
+            },
+            "Selenium.WebDriver": {
+              "target": "Package",
+              "version": "[4.5.1, )"
+            },
+            "Selenium.WebDriver.ChromeDriver": {
+              "target": "Package",
+              "version": "[106.0.5249.6100, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.401/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
