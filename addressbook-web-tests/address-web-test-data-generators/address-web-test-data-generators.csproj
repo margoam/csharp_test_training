@@ -11,4 +11,10 @@
   <ItemGroup>
     <ProjectReference Include="..\addressbook-web-tests\addressbook-web-tests.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="Newtonsoft.Json" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
 </Project>
