@@ -40,8 +40,7 @@ namespace addressbook_web_tests_data_generator
                         Footer = TestBase.GenerateRandomString(15),
                     });
                 }
-                List<GroupData> specifiedDataTypebyUser = new List<GroupData>();
-                specifiedDataTypebyUser = groups;
+               
 
                 if (fileformat == "csv")
                 {

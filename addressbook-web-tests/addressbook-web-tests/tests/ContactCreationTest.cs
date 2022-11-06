@@ -57,7 +57,7 @@ namespace addressbook_web_tests
 
         public static IEnumerable<ContactData> ContactDataFromJsonFile()
         {
-            return JsonConvert.DeserializeObject<List<ContactData>>(File.ReadAllText(@"contacts.json"));
+            return JsonConvert.DeserializeObject<List<ContactData>>(File.ReadAllText(@"contacts"));
         }
 
         [Test, TestCaseSource("ContactDataFromJsonFile")]
