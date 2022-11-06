@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Text;
+using System.Xml;
+using System.Xml.Serialization;
 using System.Text.RegularExpressions;
 using System.Threading;
 using NUnit.Framework;
@@ -23,7 +25,7 @@ namespace addressbook_web_tests
             return groups;
         }
 
-       public static IEnumerable<GroupData> GroupDataFromFile()
+       public static IEnumerable<GroupData> GroupDataFromCsvFile()
         {
             List<GroupData> groups = new List<GroupData>();
             string[] lines = File.ReadAllLines(@"groups.csv");
@@ -39,12 +41,37 @@ namespace addressbook_web_tests
             return groups;
         }
 
-        [Test, TestCaseSource("GroupDataFromFile")]
+        public static IEnumerable<GroupData> GroupDataFromXmlFile()
+        {
+            return (List<GroupData>)
+                new XmlSerializer(typeof(List<GroupData>))
+                    .Deserialize(new StreamReader(@"groups"));
+        }
+
+        //[Test, TestCaseSource("GroupDataFromCsvFile")]
+        //public void GroupCreationTest(GroupData group)
+        //{
+        
+        //    List<GroupData> oldGroups = app.Groups.GetGroupList();
+            
+        //    app.Groups.CreateGroup(group);
+
+        //    Assert.AreEqual(oldGroups.Count + 1, app.Groups.GetCountGroups());
+
+        //    List<GroupData> newGroups = app.Groups.GetGroupList();
+        //    oldGroups.Add(group);
+        //    oldGroups.Sort();
+        //    newGroups.Sort();
+        //    Assert.AreEqual(oldGroups, newGroups);
+
+        //}
+
+        [Test, TestCaseSource("GroupDataFromXmlFile")]
         public void GroupCreationTest(GroupData group)
         {
-        
+
             List<GroupData> oldGroups = app.Groups.GetGroupList();
-            
+
             app.Groups.CreateGroup(group);
 
             Assert.AreEqual(oldGroups.Count + 1, app.Groups.GetCountGroups());
@@ -56,6 +83,6 @@ namespace addressbook_web_tests
             Assert.AreEqual(oldGroups, newGroups);
 
         }
-        
+
     }
 }

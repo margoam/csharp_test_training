@@ -28,6 +28,7 @@
     <None Remove="Selenium.WebDriver.ChromeDriver" />
     <None Remove="Selenium.WebDriver" />
     <None Remove="Selenium.Support" />
+    <None Remove="tests\groups.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="tests\" />
@@ -36,6 +37,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Update="groups.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="groups">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

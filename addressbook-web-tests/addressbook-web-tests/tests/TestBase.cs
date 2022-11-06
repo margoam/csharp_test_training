@@ -30,7 +30,7 @@ namespace addressbook_web_tests
             {
                 int letter_num = rnd.Next(0, chars.Length - 1);
 
-               
+
                 word += chars[letter_num];
             }
             return word.ToString();
