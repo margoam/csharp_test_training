@@ -77,15 +77,7 @@ namespace addressbook_web_tests_data_generator
                         Middlename = TestBase.GenerateRandomString(10),
                         Nickname = TestBase.GenerateRandomString(10),
                         Company = TestBase.GenerateRandomString(10),
-                        Address = TestBase.GenerateRandomString(10),
-                        Hometel = TestBase.GenerateRandomString(10),
-                        MobTel = TestBase.GenerateRandomString(10),
-                        WorkTel = TestBase.GenerateRandomString(10),
-                        Fax = TestBase.GenerateRandomString(10),
-                        Email = TestBase.GenerateRandomString(10),
-                        Email2 = TestBase.GenerateRandomString(10),
-                        Email3 = TestBase.GenerateRandomString(10),
-                        Notes = TestBase.GenerateRandomString(10)
+                        Address = TestBase.GenerateRandomString(10)
                     });
                 }
 
