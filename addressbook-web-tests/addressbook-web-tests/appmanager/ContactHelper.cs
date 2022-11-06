@@ -175,22 +175,23 @@ namespace addressbook_web_tests
             string workPhone = driver.FindElement(By.Name("work")).GetAttribute("value");
             string faxPhone = driver.FindElement(By.Name("fax")).GetAttribute("value");
 
+
+            string email = driver.FindElement(By.Name("email")).GetAttribute("value");
+            string email2 = driver.FindElement(By.Name("email2")).GetAttribute("value");
+            string email3 = driver.FindElement(By.Name("email3")).GetAttribute("value");
+
             if (ForViewPage)
             {
+
                 if (homePhone != "")
                 { homePhone = "H:" + homePhone; }
                 if (mobilePhone != "")
-                { mobilePhone = "M:" + mobilePhone;
-            }
+                { mobilePhone = "M:" + mobilePhone; }
                 if (workPhone != "")
                 { workPhone = "W:" + workPhone; }
                 if (faxPhone != "")
                 { faxPhone = "F:" + faxPhone; }
             }
-
-            string email = driver.FindElement(By.Name("email")).GetAttribute("value");
-            string email2 = driver.FindElement(By.Name("email2")).GetAttribute("value");
-            string email3 = driver.FindElement(By.Name("email3")).GetAttribute("value");
 
             return new ContactData(firstname, lastname)
             {
