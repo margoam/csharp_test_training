@@ -44,6 +44,8 @@ namespace addressbook_web_tests
 
         public string WorkTel { get; set; }
 
+        public string SecondTel { get; set; }
+
         public string Email { get; set; }
 
         public string Email2 { get; set; }
@@ -75,18 +77,17 @@ public string AllPhones
         {
             get
             {
-                if (allPhones != null)
+                if (allPhones != null || allPhones == "")
                 {
                     return allPhones;
                 }
 
                 else
                 {
-                    return (CleanUp(Hometel) + CleanUp(MobTel) + CleanUp(WorkTel) + CleanUp(Fax))
-                        .Trim();
+                    return (CleanUp(Hometel) + CleanUp(MobTel) + CleanUp(WorkTel) + CleanUp(SecondTel)).Trim();
                 }
             }
-            set => allPhones = CleanUp(value);
+            set => allPhones = value;
         }
 
         public string AllEmails
@@ -102,7 +103,7 @@ public string AllPhones
                     return (CleanUp(Email) + CleanUp(Email2) + CleanUp(Email3)).Trim();
                 }
             }
-            set => allEmails = CleanUp(value);
+            set => allEmails = value;
         }
 
         private string CleanUpForAllInformation(string value)
@@ -125,7 +126,7 @@ public string AllPhones
             }
             else
             {
-                return Regex.Replace(value, @"[ \-()\r]", "");
+                return Regex.Replace(value, @"[ \-()]", "") + "\n";
             }
         }
 
