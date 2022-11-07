@@ -44,8 +44,6 @@ namespace addressbook_web_tests
 
         public string WorkTel { get; set; }
 
-        public string SecondTel { get; set; }
-
         public string Email { get; set; }
 
         public string Email2 { get; set; }
@@ -64,13 +62,13 @@ namespace addressbook_web_tests
                 }
                 else
                 {
-                    return $"{CleanUpForAllInformation(Lastname)}{CleanUpForAllInformation(Middlename)}{CleanUpForAllInformation(Firstname)}" +
-                        $"{CleanUpForAllInformation(Nickname)}{CleanUpForAllInformation(Company)}{CleanUpForAllInformation(Address)}" +
-                        $"{CleanUpForAllInformation(Hometel)}{CleanUpForAllInformation(MobTel)}{CleanUpForAllInformation(WorkTel)}" +
-                        $"{CleanUpForAllInformation(Fax)}{CleanUpForAllInformation(Email)}{CleanUpForAllInformation(Email2)}{CleanUpForAllInformation(Email3)}";
+                    return $"{CleanUpForAllInformation((Lastname)+ " " + (Middlename) + " " + (Firstname))}" +
+                        $"{CleanUpForAllInformation(Nickname)}{CleanUpForAllInformation(Company)}{CleanUpForAllInformation(Address) + "\n"}" +
+                        $"{CleanUpForAllInformation((Hometel)  + (MobTel) + (WorkTel) + (Fax))}" +
+                        $"{((Email)  + (Email2)  + (Email3))}";
                 }
             }
-            set => allInformation = CleanUpForAllInformation(value);
+            set => allInformation = value;
         }
 
 public string AllPhones
@@ -84,7 +82,7 @@ public string AllPhones
 
                 else
                 {
-                    return (CleanUp(Hometel) + CleanUp(MobTel) + CleanUp(WorkTel) + CleanUp(SecondTel)).Trim();
+                    return (CleanUp(Hometel) + CleanUp(MobTel) + CleanUp(WorkTel)).Trim();
                 }
             }
             set => allPhones = value;
@@ -114,7 +112,7 @@ public string AllPhones
             }
             else
             {
-                return Regex.Replace(value, @"[ \-()\r\n]", "");
+                return Regex.Replace(value, @"[\-]", "") + "\n";
             }
         }
 
@@ -126,7 +124,7 @@ public string AllPhones
             }
             else
             {
-                return Regex.Replace(value, @"[ \-()]", "") + "\n";
+                return Regex.Replace(value, @"[ \-()\r]", "") + "\n";
             }
         }
 

@@ -34,7 +34,6 @@ namespace addressbook_web_tests
             Type(By.Name("fax"), contactdata.Fax);
             Type(By.Name("mobile"), contactdata.MobTel);
             Type(By.Name("work"), contactdata.WorkTel);
-            Type(By.Name("phone2"), contactdata.SecondTel);
             Type(By.Name("email"), contactdata.Email);
             Type(By.Name("email2"), contactdata.Email2);
             Type(By.Name("email3"), contactdata.Email3);
@@ -175,7 +174,6 @@ namespace addressbook_web_tests
             string mobilePhone = driver.FindElement(By.Name("mobile")).GetAttribute("value");
             string workPhone = driver.FindElement(By.Name("work")).GetAttribute("value");
             string faxPhone = driver.FindElement(By.Name("fax")).GetAttribute("value");
-            string secondPhone = driver.FindElement(By.Name("phone2")).GetAttribute("value");
 
 
             string email = driver.FindElement(By.Name("email")).GetAttribute("value");
@@ -186,13 +184,19 @@ namespace addressbook_web_tests
             {
 
                 if (homePhone != "")
-                { homePhone = "H:" + homePhone; }
+                { homePhone = "H: " + homePhone + "\n"; }
                 if (mobilePhone != "")
-                { mobilePhone = "M:" + mobilePhone; }
+                { mobilePhone = "M: " + mobilePhone + "\n"; }
                 if (workPhone != "")
-                { workPhone = "W:" + workPhone; }
+                { workPhone = "W: " + workPhone + "\n"; }
                 if (faxPhone != "")
-                { faxPhone = "F:" + faxPhone; }
+                { faxPhone = "F: " + faxPhone + "\n"; }
+
+                if (email != "")
+                { email = email + "\n"; }
+                if (email2 != "")
+                { email2 = email2 + "\n"; }
+
             }
 
             return new ContactData(firstname, lastname)
@@ -205,7 +209,6 @@ namespace addressbook_web_tests
                 MobTel = mobilePhone,
                 WorkTel = workPhone,
                 Fax = faxPhone,
-                SecondTel = secondPhone,
                 Email = email,
                 Email2 = email2,
                 Email3 = email3
