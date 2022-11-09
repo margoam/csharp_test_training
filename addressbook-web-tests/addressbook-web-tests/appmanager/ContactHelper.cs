@@ -19,7 +19,7 @@ namespace addressbook_web_tests
         {
             manager.Navigation.GoToContactCreationpage();
             FillContactForm(contact);
-           SubmitContactCreation();
+            SubmitContactCreation();
             return this;
         }
         public ContactHelper FillContactForm(ContactData contactdata)
@@ -60,16 +60,16 @@ namespace addressbook_web_tests
         private ContactHelper EditContact()
         {
             driver.FindElement(By.XPath("//img[@alt='Edit']")).Click();
-            
+
             return this;
         }
 
         public ContactHelper SubmitContactCreation()
-                {
-                    driver.FindElement(By.XPath("//div[@id='content']/form/input[21]")).Click();
+        {
+            driver.FindElement(By.XPath("//div[@id='content']/form/input[21]")).Click();
             contactCache = null;
             return this;
-                }
+        }
 
         public ContactHelper Remove(int p)
         {
@@ -91,7 +91,7 @@ namespace addressbook_web_tests
 
         private ContactHelper SelectContact(int p)
         {
-           
+
             Thread.Sleep(500);
             driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + p + "]")).Click();
             return this;
@@ -99,7 +99,7 @@ namespace addressbook_web_tests
 
         public bool CountContacts()
         {
-           
+
             return (driver.FindElements(By.XPath("(//input[@name='selected[]'])"))).Count > 0;
 
         }
@@ -127,8 +127,8 @@ namespace addressbook_web_tests
                 {
                     var lastName = element.FindElement(By.XPath("td[2]")).Text;
                     var firstName = element.FindElement(By.XPath("td[3]")).Text;
-                
-                   
+
+
                     contactCache.Add(new ContactData(lastName, firstName)
                     {
                         Id = element.FindElement(By.Name("selected[]")).GetAttribute("value")
@@ -182,21 +182,119 @@ namespace addressbook_web_tests
 
             if (ForViewPage)
             {
+                if (firstname != "")
+                {
+                    if (middlename == "" && lastname == "" && (nickname == "" && company == "" && address == "")
+                        && (homePhone != "" || mobilePhone != "" || workPhone != "" || faxPhone != "" ||
+                        (email != "" || email2 != "" || email3 != "")))
+                    { firstname = firstname + "\n\n"; }
+                    else if (middlename != "")
+                    { firstname = firstname + " "; }
+                }
+                if (middlename != "")
+                {
+                    if (lastname == "" && (nickname == "" && company == "" && address == "") && (homePhone != "" || mobilePhone != "" || workPhone != "" || faxPhone != "" ||
+                        (email != "" || email2 != "" || email3 != "")))
+                    { middlename = middlename + "\n\n"; }
+                    else if (lastname != "")
+                    { middlename = middlename + " "; }
+                }
+
+                if (lastname != "")
+                {
+                    if (nickname == "" && company == "" && address == "" && (homePhone != "" || mobilePhone != "" || workPhone != "" || faxPhone != "" ||
+                        (email != "" || email2 != "" || email3 != "")))
+                    { lastname = lastname + "\n\n"; }
+                    else if (nickname != "" || company != "" || address != "")
+                    { lastname = lastname + "\n"; }
+                }
+
+                if (nickname != "")
+                {
+                    if (company != "" || address != "")
+                    { nickname = nickname + "\n"; }
+                    else if (company == "" && address == "" && (homePhone != "" || mobilePhone != "" || workPhone != "" || faxPhone != "" ||
+                        (email != "" || email2 != "" || email3 != "")))
+                    { nickname = nickname + "\n\n"; }
+                }
+
+                if (company != "")
+                {
+                    if (address == "" && (homePhone != "" || mobilePhone != "" || workPhone != "" || faxPhone != "" ||
+                        (email != "" || email2 != "" || email3 != "")))
+                    { company = company + "\n\n"; }
+                    else if (address != "")
+                    { company = company + "\n"; }
+                }
+
+                    if (address != "")
+                {
+                    if (homePhone != "" || mobilePhone != "" || workPhone != "" || faxPhone != "" ||
+                        (email != "" || email2 != "" || email3 != ""))
+                        { address = address + "\n\n"; }
+
+                }
 
                 if (homePhone != "")
-                { homePhone = "H: " + homePhone + "\n"; }
+                {
+                    if (mobilePhone == "" && workPhone == "" && faxPhone == "" &&
+                        (email != "" || email2 != "" || email3 != ""))
+                    { homePhone = "H: " + homePhone + "\n\n"; }
+                    else if (mobilePhone == "" && workPhone == "" && faxPhone == "" &&
+                        (email == "" && email2 == "" && email3 == ""))
+                    { homePhone = "H: " + homePhone; }
+                    else
+                    { homePhone = "H: " + homePhone + "\n"; }
+                }
+
                 if (mobilePhone != "")
-                { mobilePhone = "M: " + mobilePhone + "\n"; }
+                {
+                    if (workPhone == "" && faxPhone == "" &&
+                    (email != "" || email2 != "" || email3 != ""))
+                    { mobilePhone = "M: " + mobilePhone + "\n\n"; }
+                    else if (workPhone == "" && faxPhone == "" &&
+                        (email == "" && email2 == "" && email3 == ""))
+                    { mobilePhone = "M: " + mobilePhone; }
+                    else
+                    { mobilePhone = "M: " + mobilePhone + "\n"; }
+                }
+
                 if (workPhone != "")
-                { workPhone = "W: " + workPhone + "\n"; }
+                {
+                    if (faxPhone == "" && (email != "" || email2 != "" || email3 != ""))
+                    { workPhone = "W: " + workPhone + "\n\n"; }
+                    else if (faxPhone == "" &&
+                        (email == "" && email2 == "" && email3 == ""))
+                    { workPhone = "W: " + workPhone; }
+                    else
+                    { workPhone = "W: " + workPhone + "\n"; }
+                }
+
                 if (faxPhone != "")
-                { faxPhone = "F: " + faxPhone + "\n"; }
+                {
+                    if (email == "" && email2 == "" && email3 == "")
+                    { faxPhone = "F: " + faxPhone; }
+                    else if (email != "" || email2 != "" || email3 != "")
+                    { faxPhone = "F: " + faxPhone + "\n\n"; }
+                }
 
                 if (email != "")
-                { email = email + "\n"; }
+                {
+                    if (email2 == "" && email3 == "")
+                    { email = email + ""; }
+                    else
+                    {
+                        email = email + "\n";
+                    }
+                }
                 if (email2 != "")
-                { email2 = email2 + "\n"; }
+                {
+                    if (email3 == "")
+                    { email2 = email2 + ""; }
+                    else
+                    { email2 = email2 + "\n"; }
 
+                }
             }
 
             return new ContactData(firstname, lastname)
@@ -214,6 +312,7 @@ namespace addressbook_web_tests
                 Email3 = email3
             };
         }
+    
 
         private void InitContactModification(int index)
         {

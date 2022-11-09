@@ -62,9 +62,9 @@ namespace addressbook_web_tests
                 }
                 else
                 {
-                    return $"{CleanUpForAllInformation((Lastname)+ " " + (Middlename) + " " + (Firstname))}" +
-                        $"{CleanUpForAllInformation(Nickname)}{CleanUpForAllInformation(Company)}{CleanUpForAllInformation(Address) + "\n"}" +
-                        $"{CleanUpForAllInformation((Hometel)  + (MobTel) + (WorkTel) + (Fax))}" +
+                    return $"{(Lastname) + (Middlename) + (Firstname)}" +
+                        $"{(Nickname)}{(Company)}{(Address)}" +
+                        $"{(Hometel)  + (MobTel) + (WorkTel) + (Fax)}" +
                         $"{((Email)  + (Email2)  + (Email3))}";
                 }
             }
