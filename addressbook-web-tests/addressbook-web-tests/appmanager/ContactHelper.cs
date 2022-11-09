@@ -190,6 +190,10 @@ namespace addressbook_web_tests
                     { firstname = firstname + "\n\n"; }
                     else if (middlename != "")
                     { firstname = firstname + " "; }
+                    else if (middlename == "" && lastname == "" && ((nickname != "" || company != "" || address != "")
+                        || (homePhone != "" || mobilePhone != "" || workPhone != "" || faxPhone != "" ||
+                        (email != "" || email2 != "" || email3 != ""))))
+                    { firstname = firstname + "\n"; }
                 }
                 if (middlename != "")
                 {
@@ -198,6 +202,10 @@ namespace addressbook_web_tests
                     { middlename = middlename + "\n\n"; }
                     else if (lastname != "")
                     { middlename = middlename + " "; }
+                    else if (lastname == "" && ((nickname != "" || company != "" || address != "")
+                        || (homePhone != "" || mobilePhone != "" || workPhone != "" || faxPhone != "" ||
+                        (email != "" || email2 != "" || email3 != ""))))
+                    { middlename = middlename + "\n"; }
                 }
 
                 if (lastname != "")
