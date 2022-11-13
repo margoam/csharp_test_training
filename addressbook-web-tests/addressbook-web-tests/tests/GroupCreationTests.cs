@@ -90,5 +90,26 @@ namespace addressbook_web_tests
 
         }
 
+
+        [Test]
+        public void TestDBConnectivity()
+        {
+            DateTime start = DateTime.Now;
+
+            List<GroupData> fromUI = app.Groups.GetGroupList();
+
+            DateTime end = DateTime.Now;
+
+            Console.WriteLine(end.Subtract(start));
+
+
+            start = DateTime.Now;
+            List<GroupData> fromDb = GroupData.GetAll();
+            end = DateTime.Now;
+            Console.WriteLine(end.Subtract(start));
+
+
+        }
+
     }
 }
