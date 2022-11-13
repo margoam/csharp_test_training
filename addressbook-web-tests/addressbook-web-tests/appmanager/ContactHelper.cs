@@ -187,59 +187,59 @@ namespace addressbook_web_tests
                     if (middlename == "" && lastname == "" && (nickname == "" && company == "" && address == "")
                         && (homePhone != "" || mobilePhone != "" || workPhone != "" || faxPhone != "" ||
                         (email != "" || email2 != "" || email3 != "")))
-                    { firstname = firstname + "\n\n"; }
-                    else if (middlename != "")
+                    { firstname = firstname + "\r\n\r\n"; }
+                    else if (middlename != "" || lastname != "")
                     { firstname = firstname + " "; }
                     else if (middlename == "" && lastname == "" && ((nickname != "" || company != "" || address != "")
                         || (homePhone != "" || mobilePhone != "" || workPhone != "" || faxPhone != "" ||
                         (email != "" || email2 != "" || email3 != ""))))
-                    { firstname = firstname + "\n"; }
+                    { firstname = firstname + "\r\n"; }
                 }
                 if (middlename != "")
                 {
                     if (lastname == "" && (nickname == "" && company == "" && address == "") && (homePhone != "" || mobilePhone != "" || workPhone != "" || faxPhone != "" ||
                         (email != "" || email2 != "" || email3 != "")))
-                    { middlename = middlename + "\n\n"; }
+                    { middlename = middlename + "\r\n\r\n"; }
                     else if (lastname != "")
                     { middlename = middlename + " "; }
                     else if (lastname == "" && ((nickname != "" || company != "" || address != "")
                         || (homePhone != "" || mobilePhone != "" || workPhone != "" || faxPhone != "" ||
                         (email != "" || email2 != "" || email3 != ""))))
-                    { middlename = middlename + "\n"; }
+                    { middlename = middlename + "\r\n"; }
                 }
 
                 if (lastname != "")
                 {
                     if (nickname == "" && company == "" && address == "" && (homePhone != "" || mobilePhone != "" || workPhone != "" || faxPhone != "" ||
                         (email != "" || email2 != "" || email3 != "")))
-                    { lastname = lastname + "\n\n"; }
+                    { lastname = lastname + "\r\n\r\n"; }
                     else if (nickname != "" || company != "" || address != "")
-                    { lastname = lastname + "\n"; }
+                    { lastname = lastname + "\r\n"; }
                 }
 
                 if (nickname != "")
                 {
                     if (company != "" || address != "")
-                    { nickname = nickname + "\n"; }
+                    { nickname = nickname + "\r\n"; }
                     else if (company == "" && address == "" && (homePhone != "" || mobilePhone != "" || workPhone != "" || faxPhone != "" ||
                         (email != "" || email2 != "" || email3 != "")))
-                    { nickname = nickname + "\n\n"; }
+                    { nickname = nickname + "\r\n\r\n"; }
                 }
 
                 if (company != "")
                 {
                     if (address == "" && (homePhone != "" || mobilePhone != "" || workPhone != "" || faxPhone != "" ||
                         (email != "" || email2 != "" || email3 != "")))
-                    { company = company + "\n\n"; }
+                    { company = company + "\r\n\r\n"; }
                     else if (address != "")
-                    { company = company + "\n"; }
+                    { company = company + "\r\n"; }
                 }
 
                     if (address != "")
                 {
                     if (homePhone != "" || mobilePhone != "" || workPhone != "" || faxPhone != "" ||
                         (email != "" || email2 != "" || email3 != ""))
-                        { address = address + "\n\n"; }
+                        { address = address + "\r\n\r\n"; }
 
                 }
 
@@ -247,35 +247,35 @@ namespace addressbook_web_tests
                 {
                     if (mobilePhone == "" && workPhone == "" && faxPhone == "" &&
                         (email != "" || email2 != "" || email3 != ""))
-                    { homePhone = "H: " + homePhone + "\n\n"; }
+                    { homePhone = "H: " + homePhone + "\r\n\r\n"; }
                     else if (mobilePhone == "" && workPhone == "" && faxPhone == "" &&
                         (email == "" && email2 == "" && email3 == ""))
                     { homePhone = "H: " + homePhone; }
                     else
-                    { homePhone = "H: " + homePhone + "\n"; }
+                    { homePhone = "H: " + homePhone + "\r\n"; }
                 }
 
                 if (mobilePhone != "")
                 {
                     if (workPhone == "" && faxPhone == "" &&
                     (email != "" || email2 != "" || email3 != ""))
-                    { mobilePhone = "M: " + mobilePhone + "\n\n"; }
+                    { mobilePhone = "M: " + mobilePhone + "\r\n\r\n"; }
                     else if (workPhone == "" && faxPhone == "" &&
                         (email == "" && email2 == "" && email3 == ""))
                     { mobilePhone = "M: " + mobilePhone; }
                     else
-                    { mobilePhone = "M: " + mobilePhone + "\n"; }
+                    { mobilePhone = "M: " + mobilePhone + "\r\n"; }
                 }
 
                 if (workPhone != "")
                 {
                     if (faxPhone == "" && (email != "" || email2 != "" || email3 != ""))
-                    { workPhone = "W: " + workPhone + "\n\n"; }
+                    { workPhone = "W: " + workPhone + "\r\n\r\n"; }
                     else if (faxPhone == "" &&
                         (email == "" && email2 == "" && email3 == ""))
                     { workPhone = "W: " + workPhone; }
                     else
-                    { workPhone = "W: " + workPhone + "\n"; }
+                    { workPhone = "W: " + workPhone + "\r\n"; }
                 }
 
                 if (faxPhone != "")
@@ -283,7 +283,7 @@ namespace addressbook_web_tests
                     if (email == "" && email2 == "" && email3 == "")
                     { faxPhone = "F: " + faxPhone; }
                     else if (email != "" || email2 != "" || email3 != "")
-                    { faxPhone = "F: " + faxPhone + "\n\n"; }
+                    { faxPhone = "F: " + faxPhone + "\r\n\r\n"; }
                 }
 
                 if (email != "")
@@ -292,7 +292,7 @@ namespace addressbook_web_tests
                     { email = email + ""; }
                     else
                     {
-                        email = email + "\n";
+                        email = email + "\r\n";
                     }
                 }
                 if (email2 != "")
@@ -300,7 +300,7 @@ namespace addressbook_web_tests
                     if (email3 == "")
                     { email2 = email2 + ""; }
                     else
-                    { email2 = email2 + "\n"; }
+                    { email2 = email2 + "\r\n"; }
 
                 }
             }
