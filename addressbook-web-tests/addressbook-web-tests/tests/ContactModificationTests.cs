@@ -2,7 +2,7 @@
 namespace addressbook_web_tests
 {
     [TestFixture]
-    public class ContactModificationTests : AuthTestBase
+    public class ContactModificationTests : ContactTestBase
     {
         [Test]
         public void ContactModificationTest()
@@ -23,15 +23,16 @@ namespace addressbook_web_tests
             contactEditData.Company = "Company name edit";
             contactEditData.Address = "Address test edit";
 
-            List<ContactData> oldContacts = app.Contacts.GetContactList();
-            ContactData oldData = oldContacts[0];
-
-            app.Contacts.Modify(1, contactEditData);
-
-            List<ContactData> newContacts = app.Contacts.GetContactList();
-            oldContacts[0].Lastname = contactEditData.Lastname;
-            oldContacts[0].Firstname = contactEditData.Firstname;
+            List<ContactData> oldContacts = ContactData.GetAll();
+            ContactData toBeModified = oldContacts[0];
+            app.Contacts.Modify(toBeModified, contactEditData);
+      
+            Thread.Sleep(200);
+            toBeModified.Id = contactEditData.Id;
+            Thread.Sleep(500);
+            List<ContactData> newContacts = ContactData.GetAll();
             
+
             oldContacts.Sort();
             newContacts.Sort();
 
@@ -39,10 +40,10 @@ namespace addressbook_web_tests
 
             foreach (ContactData contact in newContacts)
             {
-                if (contact.Id == oldData.Id)
+                if (contact.Id == toBeModified.Id)
                 {
-                    Assert.AreEqual(contactEditData.Firstname, oldData.Firstname);
-                    Assert.AreEqual(contactEditData.Lastname, oldData.Lastname);
+                    Assert.AreEqual(contactEditData.Firstname, toBeModified.Firstname);
+                    Assert.AreEqual(contactEditData.Lastname, toBeModified.Lastname);
                 }
             }
         }

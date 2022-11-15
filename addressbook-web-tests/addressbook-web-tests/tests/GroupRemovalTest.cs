@@ -28,7 +28,7 @@ namespace addressbook_web_tests
             app.Groups.Remove(toBeRemoved);
 
             Assert.AreEqual(oldGroups.Count - 1, app.Groups.GetCountGroups());
-            oldGroups.Remove(oldGroups[0]);
+            oldGroups.Remove(toBeRemoved);
             List<GroupData> newGroups = GroupData.GetAll();
          
             oldGroups.Sort();

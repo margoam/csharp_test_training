@@ -40,13 +40,13 @@
     <Folder Include="appmanager\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="bin\Debug\net6.0\contacts.json" />
+  </ItemGroup>
+  <ItemGroup>
     <None Update="groups.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="groups">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="contacts">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

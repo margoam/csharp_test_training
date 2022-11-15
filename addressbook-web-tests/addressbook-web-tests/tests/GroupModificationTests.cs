@@ -27,8 +27,9 @@ namespace addressbook_web_tests
             GroupData tobeModified = oldGroups[0];
 
             app.Groups.Modify(tobeModified, groupNew);
-            List<GroupData> newGroups = app.Groups.GetGroupList();
-            oldGroups[0].Id = groupNew.Id;
+            Thread.Sleep(500);
+            tobeModified.Id = groupNew.Id;
+            List<GroupData> newGroups = GroupData.GetAll();
             oldGroups.Sort();
             newGroups.Sort();
             Assert.AreEqual(oldGroups, newGroups);

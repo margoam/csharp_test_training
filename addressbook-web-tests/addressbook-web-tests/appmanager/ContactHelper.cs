@@ -40,10 +40,20 @@ namespace addressbook_web_tests
 
             return this;
         }
-        internal ContactHelper Modify(int p, ContactData contact)
+        public ContactHelper Modify(int p, ContactData contact)
         {
             manager.Navigation.OpenHomePage();
             SelectContact(p);
+            EditContact();
+            FillContactForm(contact);
+            SubmitContactUpdate();
+            return this;
+        }
+
+        internal ContactHelper Modify(ContactData selectContact, ContactData contact)
+        {
+            manager.Navigation.OpenHomePage();
+            SelectContact(selectContact.Id);
             EditContact();
             FillContactForm(contact);
             SubmitContactUpdate();
@@ -79,6 +89,14 @@ namespace addressbook_web_tests
             return this;
         }
 
+        public ContactHelper Remove(ContactData contact)
+        {
+            manager.Navigation.OpenHomePage();
+            SelectContact(contact.Id);
+            RemoveContact();
+            return this;
+        }
+
         private ContactHelper RemoveContact()
         {
             driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
@@ -94,6 +112,14 @@ namespace addressbook_web_tests
 
             Thread.Sleep(500);
             driver.FindElement(By.XPath("(//input[@name='selected[]'])[" + p + "]")).Click();
+            return this;
+        }
+
+        private ContactHelper SelectContact(String id)
+        {
+
+            Thread.Sleep(500);
+            driver.FindElement(By.XPath("(//input[@name='selected[]' and @value = '" + id + "'])")).Click();
             return this;
         }
 
