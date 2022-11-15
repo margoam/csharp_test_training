@@ -11,6 +11,8 @@ namespace addressbook_web_tests
     {
 
         protected ApplicationManager app;
+        public static bool PERFORM_LONG_UI_CHECKS_GROUPS = true;
+        public static bool PERFORM_LONG_UI_CHECKS_CONTACTS = true;
 
 
         [SetUp]

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
+using LinqToDB.Mapping;
 
 namespace addressbook_web_tests
 {
+    [Table(Name = "addressbook")]
     public class ContactData : IEquatable<ContactData>, IComparable<ContactData>
     {
       
@@ -22,34 +24,49 @@ namespace addressbook_web_tests
 
         private string allEmails;
 
+        [Column(Name = "id"), PrimaryKey, Identity]
         public string Id { get; set; }
 
+        [Column(Name = "firstname"), NotNull]
         public string Firstname { get; set; }
 
+        [Column(Name = "middlename"), NotNull]
         public string Middlename { get; set; }
 
+        [Column(Name = "lastname"), NotNull]
         public string Lastname { get; set; }
 
+        [Column(Name = "nickname"), NotNull]
         public string Nickname { get; set; }
 
+        [Column(Name = "company"), NotNull]
         public string Company { get; set; }
 
+        [Column(Name = "address"), NotNull]
         public string Address { get; set; }
 
+        [Column(Name = "home"), NotNull]
         public string Hometel { get; set; }
 
+        [Column(Name = "fax"), NotNull]
         public string Fax { get; set; }
 
+        [Column(Name = "mobile"), NotNull]
         public string MobTel { get; set; }
 
+        [Column(Name = "work"), NotNull]
         public string WorkTel { get; set; }
 
+        [Column(Name = "email"), NotNull]
         public string Email { get; set; }
 
+        [Column(Name = "email2"), NotNull]
         public string Email2 { get; set; }
 
+        [Column(Name = "email3"), NotNull]
         public string Email3 { get; set; }
 
+        [Column(Name = "notes"), NotNull]
         public string Notes { get; set; }
 
         public string AllInformation
@@ -155,6 +172,14 @@ public string AllPhones
         {
             return Lastname + " " + Firstname;
 
+        }
+
+        public static List<ContactData> GetAll()
+        {
+            using (AddressBookDB db = new AddressBookDB())
+            {
+                return (from g in db.Contacts select g).ToList();
+            }
         }
 
         public override int GetHashCode() => Tuple.Create(Firstname, Lastname).GetHashCode();

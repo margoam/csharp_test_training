@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 namespace addressbook_web_tests
 {
     [TestFixture] // attribute
-    public class GroupCreationTests : AuthTestBase
+    public class GroupCreationTests : GroupTestBase
     {
         public static IEnumerable<GroupData> RandomGroupDataProvider()
         {
