@@ -21,14 +21,15 @@ namespace addressbook_web_tests
                 group.Footer = null;
                 app.Groups.CreateGroup(group);
             }
-            List<GroupData> oldGroups = app.Groups.GetGroupList();
-      
-            app.Groups.Remove(1);
+            List<GroupData> oldGroups = GroupData.GetAll();
+
+            GroupData toBeRemoved = oldGroups[0];
+
+            app.Groups.Remove(toBeRemoved);
 
             Assert.AreEqual(oldGroups.Count - 1, app.Groups.GetCountGroups());
-            GroupData toBeRemoved = oldGroups[0];
             oldGroups.Remove(oldGroups[0]);
-            List<GroupData> newGroups = app.Groups.GetGroupList();
+            List<GroupData> newGroups = GroupData.GetAll();
          
             oldGroups.Sort();
             newGroups.Sort();

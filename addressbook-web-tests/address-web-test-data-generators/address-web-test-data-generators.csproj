@@ -10,9 +10,11 @@
 
   <ItemGroup>
     <None Remove="Newtonsoft.Json" />
+    <None Remove="linq2db.MySql" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="linq2db.MySql" Version="2.0.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\addressbook-web-tests\addressbook-web-tests.csproj" />
