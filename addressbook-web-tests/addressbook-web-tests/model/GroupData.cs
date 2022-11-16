@@ -11,7 +11,7 @@ namespace addressbook_web_tests
         public GroupData(string name) // constructor
         {
             Name = name;
-          
+
         }
 
         public GroupData()
@@ -42,7 +42,7 @@ namespace addressbook_web_tests
                 return 1;
             }
             return Name.CompareTo(other.Name);
-         
+
         }
 
         public bool Equals(GroupData other)
@@ -52,18 +52,18 @@ namespace addressbook_web_tests
                 return false;
             }
             if (Object.ReferenceEquals(this, other))
-                {
+            {
                 return true;
             }
             return Name == other.Name;
-         
+
 
         }
 
         public override string ToString()
         {
-            return Name + " " + Header + " " + Footer ;
-         
+            return Name + " " + Header + " " + Footer;
+
         }
 
         public static List<GroupData> GetAll()
@@ -73,6 +73,19 @@ namespace addressbook_web_tests
                 return (from g in db.Groups select g).ToList();
             }
         }
+
+        public List<ContactData> GetContacts()
+        {
+            using (AddressBookDB db = new AddressBookDB())
+            {
+                return (from c in db.Contacts
+                        from gcr in db.GCR.Where(p =>p.GroupId == Id
+                        && p.ContactId == c.Id && c.Deprecated == "0000-00-00 00:00:00")
+                        select c).Distinct().ToList();
+            }
+
+        }
+
     }
 }
 

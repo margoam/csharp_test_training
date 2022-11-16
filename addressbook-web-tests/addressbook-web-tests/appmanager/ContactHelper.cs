@@ -372,8 +372,91 @@ namespace addressbook_web_tests
                 AllInformation = allInformation
             };
         }
+
+        public void AddContactToGroup(ContactData contact, GroupData group)
+        {
+            manager.Navigation.OpenHomePage();
+            Thread.Sleep(200);
+            ClearGroupFilter();
+            SelectContactForGroup(contact.Id);
+            SelectGroupToAdd(group.Name);
+            CommitAddingContactToGroup();
+            new WebDriverWait(driver, TimeSpan.FromSeconds(10))
+                .Until(d => d.FindElements(By.CssSelector("div.msgbox")).Count > 0);
+        }
+
+        public void DeleteContactToGroup(ContactData contact, GroupData group)
+        {
+            manager.Navigation.OpenHomePage();
+            Thread.Sleep(200);
+            SelectGroupForDeleteContact(group.Name);
+            SelectContactForDelete(contact.Id);
+            CommitDeletingContactFromGroup();
+
+        }
+
+        private void SelectGroupToAdd(string name)
+        {
+            new SelectElement(driver.FindElement(By.Name("to_group"))).SelectByText(name);
+        }
+
+        public void CommitAddingContactToGroup()
+        {
+            driver.FindElement(By.Name("add")).Click();
+        }
+
+        public void SelectContactForGroup(string id)
+        {
+            driver.FindElement(By.Id(id)).Click();
+        }
+
+        public void ClearGroupFilter()
+        {
+            new SelectElement(driver.FindElement(By.Name("group"))).SelectByText("[all]");
+        }
+
+        public void SelectGroupForDeleteContact(string name)
+        {
+            Thread.Sleep(200);
+            new SelectElement(driver.FindElement(By.Name("group"))).SelectByText($"{name}");
+            Thread.Sleep(200);
+        }
+
+        public void SelectContactForDelete(string id)
+        {
+            driver.FindElement(By.Id(id)).Click();
+        }
+
+        public void CommitDeletingContactFromGroup()
+        {
+            driver.FindElement(By.Name("remove")).Click();
+        }
+
+        
+
+       
     }
+
+        //select a contact not in a group
+
+        //public ContactData FindContactNotInGroup(List<ContactData> contacts, List<GroupData> groups)
+        //{
+        //    foreach (ContactData contact in contacts)
+        //    {
+        //        foreach(GroupData group in groups)
+        //        {
+        //            if (group.GetContacts().Contains(contact))
+        //            {
+        //                continue;
+        //            }
+
+        //            else if(!group.GetContacts().Contains(contact))
+        //            {
+        //                return contact;
+        //                break;
+        //            }
+        //        }
+        //    }
+        //}
+    
 }
-
-
-
