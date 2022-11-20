@@ -185,6 +185,18 @@ public string AllPhones
             }
         }
 
+        public List<GroupData> GetGroups()
+        {
+            using (AddressBookDB db = new AddressBookDB())
+            {
+                return (from f in db.Groups
+                        from gcr in db.GCR.Where(p => p.ContactId == Id
+                        && p.GroupId == f.Id && f.Deprecated == "0000-00-00 00:00:00")
+                        select f).Distinct().ToList();
+            }
+
+        }
+
         public override int GetHashCode() => Tuple.Create(Firstname, Lastname).GetHashCode();
     }
 }

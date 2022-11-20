@@ -29,15 +29,46 @@ namespace addressbook_web_tests
                 app.Groups.CreateGroup(groupData);
             }
 
+            List<GroupData> groups = GroupData.GetAll();
+            ContactData? chosenContact = app.Contacts.FindContactNotInGroup();
+            GroupData? group = null;
 
-            GroupData group = GroupData.GetAll()[0];
+            //Selection a group and a contact for adding a contact to a group
+            if (chosenContact == null)
+            {
+                ContactData contactData = new ContactData(firstname: "First_name",
+            lastname: "Last name");
+                contactData.Middlename = "Middle_name";
+                contactData.Nickname = "Nick name";
+                contactData.Company = "Company name";
+                contactData.Address = "Address test";
+                app.Contacts.CreateContact(contactData);
+                Thread.Sleep(200);
+                chosenContact = app.Contacts.FindContactNotInGroup();
+                group = GroupData.GetAll()[0];
+            }
+            else
+            {
+                foreach (GroupData element in groups)
+                {
+                    if (element.GetContacts().Contains(chosenContact))
+                    {
+                        continue;
+                    }
+                    else if (!element.GetContacts().Contains(chosenContact))
+                    {
+                        group = element;
+                        break;
+                    }
+                }
+            }
+           
             List<ContactData> oldList = group.GetContacts();
-            ContactData contact = ContactData.GetAll().Except(oldList).First();
 
-            app.Contacts.AddContactToGroup(contact, group);
+            app.Contacts.AddContactToGroup(chosenContact, group);
 
             List<ContactData> newList = group.GetContacts();
-            oldList.Add(contact);
+            oldList.Add(chosenContact);
             oldList.Sort();
             newList.Sort();
 

@@ -432,31 +432,53 @@ namespace addressbook_web_tests
             driver.FindElement(By.Name("remove")).Click();
         }
 
-        
 
-       
+        //select a contact not in a group
+
+        public ContactData? FindContactNotInGroup()
+        {
+            int totalGroups = GroupData.GetAll().Count();
+            List<ContactData> contacts = ContactData.GetAll();
+            ContactData? chosenContact = null;
+            foreach (ContactData contact in contacts)
+            {
+                int contactGroups = contact.GetGroups().Count();
+                if(contactGroups < totalGroups)
+                {
+                    chosenContact = contact;
+                    break;
+                }
+                else if(contactGroups == totalGroups)
+                {
+                    continue;
+                }
+              
+            }
+
+            return chosenContact;
+        }
+
+        //select a contact in a group
+
+        //public ContactData? FindContactInGroup()
+        //{
+        //    List<ContactData> contacts = ContactData.GetAll();
+        //    ContactData? chosenContact = null;
+        //    foreach (ContactData contact in contacts)
+        //    {
+        //        int contactGroups = contact.GetGroups().Count();
+        //        if (contactGroups > 0)
+        //        {
+        //            chosenContact = contact;
+        //            break;
+        //        }
+        //    }
+
+        //    return chosenContact;
+        //}
+
+
+
     }
-
-    //select a contact not in a group
-
-    //public object FindContactNotInGroup(List<ContactData> contacts, List<GroupData> groups)
-    //{
-    //    foreach (ContactData contact in contacts)
-    //    {
-    //        foreach (GroupData group in groups)
-    //        {
-    //            if (group.GetContacts().Contains(contact))
-    //            {
-    //                continue;
-    //            }
-
-    //            else if (!group.GetContacts().Contains(contact))
-    //            {
-    //                return Tuple.Create(contact, group);
-
-    //            }
-    //        }
-    //    }
-    //}
 
 }

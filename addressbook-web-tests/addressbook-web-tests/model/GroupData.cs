@@ -35,6 +35,9 @@ namespace addressbook_web_tests
 
         public string Footer { get; set; }
 
+        [Column(Name = "deprecated")]
+        public string Deprecated { get; set; }
+
         public int CompareTo(GroupData other)
         {
             if (Object.ReferenceEquals(other, null))

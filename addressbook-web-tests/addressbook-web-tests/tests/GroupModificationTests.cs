@@ -26,6 +26,7 @@ namespace addressbook_web_tests
             List<GroupData> oldGroups = GroupData.GetAll();
             GroupData tobeModified = oldGroups[0];
             groupNew.Id = tobeModified.Id;
+      
             oldGroups.Remove(tobeModified);
             app.Groups.Modify(tobeModified, groupNew);
             Thread.Sleep(500);
