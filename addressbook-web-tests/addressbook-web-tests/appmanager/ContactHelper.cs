@@ -44,7 +44,7 @@ namespace addressbook_web_tests
         {
             manager.Navigation.OpenHomePage();
             SelectContact(p);
-            EditContact();
+            EditContact(contact.Id);
             FillContactForm(contact);
             SubmitContactUpdate();
             return this;
@@ -54,7 +54,7 @@ namespace addressbook_web_tests
         {
             manager.Navigation.OpenHomePage();
             SelectContact(selectContact.Id);
-            EditContact();
+            EditContact(selectContact.Id);
             FillContactForm(contact);
             SubmitContactUpdate();
             return this;
@@ -67,9 +67,9 @@ namespace addressbook_web_tests
             return this;
         }
 
-        private ContactHelper EditContact()
+        private ContactHelper EditContact(String id)
         {
-            driver.FindElement(By.XPath("//img[@alt='Edit']")).Click();
+            driver.FindElement(By.CssSelector("a[href='edit.php?id="+ id +"']")).Click();
 
             return this;
         }
@@ -437,26 +437,26 @@ namespace addressbook_web_tests
        
     }
 
-        //select a contact not in a group
+    //select a contact not in a group
 
-        //public ContactData FindContactNotInGroup(List<ContactData> contacts, List<GroupData> groups)
-        //{
-        //    foreach (ContactData contact in contacts)
-        //    {
-        //        foreach(GroupData group in groups)
-        //        {
-        //            if (group.GetContacts().Contains(contact))
-        //            {
-        //                continue;
-        //            }
+    //public object FindContactNotInGroup(List<ContactData> contacts, List<GroupData> groups)
+    //{
+    //    foreach (ContactData contact in contacts)
+    //    {
+    //        foreach (GroupData group in groups)
+    //        {
+    //            if (group.GetContacts().Contains(contact))
+    //            {
+    //                continue;
+    //            }
 
-        //            else if(!group.GetContacts().Contains(contact))
-        //            {
-        //                return contact;
-        //                break;
-        //            }
-        //        }
-        //    }
-        //}
-    
+    //            else if (!group.GetContacts().Contains(contact))
+    //            {
+    //                return Tuple.Create(contact, group);
+
+    //            }
+    //        }
+    //    }
+    //}
+
 }

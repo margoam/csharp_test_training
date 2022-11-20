@@ -25,22 +25,17 @@ namespace addressbook_web_tests
             }
             List<GroupData> oldGroups = GroupData.GetAll();
             GroupData tobeModified = oldGroups[0];
-
+            groupNew.Id = tobeModified.Id;
+            oldGroups.Remove(tobeModified);
             app.Groups.Modify(tobeModified, groupNew);
             Thread.Sleep(500);
-            tobeModified.Id = groupNew.Id;
+           
             List<GroupData> newGroups = GroupData.GetAll();
+            oldGroups.Add(groupNew);
             oldGroups.Sort();
             newGroups.Sort();
             Assert.AreEqual(oldGroups, newGroups);
 
-            foreach (GroupData group in newGroups)
-            {
-                if (group.Id == tobeModified.Id)
-                {
-                    Assert.AreEqual(groupNew.Name, tobeModified.Name);
-                }
-            }
         }
     }
 }
