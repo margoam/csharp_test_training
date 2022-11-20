@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+
 namespace addressbook_web_tests
 {
     public class AddingContactToGroupTests : AuthTestBase
@@ -51,14 +53,14 @@ namespace addressbook_web_tests
             {
                 foreach (GroupData element in groups)
                 {
-                    if (element.GetContacts().Contains(chosenContact))
-                    {
-                        continue;
-                    }
-                    else if (!element.GetContacts().Contains(chosenContact))
+                    if (!element.GetContacts().Contains(chosenContact))
                     {
                         group = element;
                         break;
+                    }
+                    else if (element.GetContacts().Contains(chosenContact))
+                    {
+                        continue;
                     }
                 }
             }

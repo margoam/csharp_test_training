@@ -152,7 +152,7 @@ public string AllPhones
         {
             if (ReferenceEquals(other, null))
                 return 1;
-                return String.Compare((Lastname + Firstname),
+                return String.Compare((Id + Lastname + Firstname),other.Id +
                 other.Lastname + other.Firstname, StringComparison.Ordinal);
         }
 
@@ -166,7 +166,7 @@ public string AllPhones
             {
                 return true;
             }
-            return Lastname == other.Lastname && Firstname == other.Firstname;
+            return Id == other.Id && Lastname == other.Lastname && Firstname == other.Firstname;
            
 
         }

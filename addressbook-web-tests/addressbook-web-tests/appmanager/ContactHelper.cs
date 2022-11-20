@@ -476,9 +476,6 @@ namespace addressbook_web_tests
 
         //    return chosenContact;
         //}
-
-
-
     }
 
 }
