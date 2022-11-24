@@ -44,7 +44,8 @@ namespace addressbook_web_tests
             {
                 return 1;
             }
-            return Name.CompareTo(other.Name);
+            return String.Compare((Id + Name), other.Id +
+                other.Name, StringComparison.Ordinal);
 
         }
 
@@ -58,7 +59,7 @@ namespace addressbook_web_tests
             {
                 return true;
             }
-            return Name == other.Name;
+            return Id == other.Id && Name == other.Name;
 
 
         }

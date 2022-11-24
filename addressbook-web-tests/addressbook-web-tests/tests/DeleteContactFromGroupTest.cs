@@ -34,12 +34,14 @@ namespace addressbook_web_tests
             List<ContactData> contacts = ContactData.GetAll();
             GroupData group = GroupData.GetAll()[0];
             List<ContactData> oldList = group.GetContacts();
-            ContactData contact = ContactData.GetAll().Concat(oldList).First();
 
             if(oldList.Count() == 0)
             {
                 app.Contacts.AddContactToGroup(contacts[0], group);
             }
+
+            oldList = group.GetContacts();
+            ContactData contact = oldList.First();
 
             app.Contacts.DeleteContactToGroup(contact, group);
 
