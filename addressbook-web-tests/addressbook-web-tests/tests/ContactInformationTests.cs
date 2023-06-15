@@ -12,10 +12,10 @@ namespace addressbook_web_tests
             ContactData fromTable = app.Contacts.GetContactInformationFromTable(0);
             ContactData fromForm = app.Contacts.GetContactInformationFromEditForm(0);
 
-            Assert.AreEqual(fromTable, fromForm);
-            Assert.AreEqual(fromTable.Address, fromForm.Address);
-            Assert.AreEqual(fromTable.AllPhones, fromForm.AllPhones);
-            Assert.AreEqual(fromTable.AllEmails, fromForm.AllEmails);
+            Assert.That(fromForm, Is.EqualTo(fromTable));
+            Assert.That(fromForm.Address, Is.EqualTo(fromTable.Address));
+            Assert.That(fromForm.AllPhones, Is.EqualTo(fromTable.AllPhones));
+            Assert.That(fromForm.AllEmails, Is.EqualTo(fromTable.AllEmails));
         }
 
 
@@ -25,7 +25,7 @@ namespace addressbook_web_tests
             ContactData fromForm = app.Contacts.GetContactInformationFromEditForm(0, true);
             ContactData fromViewForm = app.Contacts.GetContactInfoFromViewForm(0);
 
-            Assert.AreEqual(fromForm.AllInformation, fromViewForm.AllInformation);
+            Assert.That(fromViewForm.AllInformation, Is.EqualTo(fromForm.AllInformation));
         }
     }
 }

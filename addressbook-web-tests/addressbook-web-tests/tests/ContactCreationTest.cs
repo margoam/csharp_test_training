@@ -72,7 +72,7 @@ namespace addressbook_web_tests
             oldContacts.Add(contact);
             oldContacts.Sort();
             newContacts.Sort();
-            Assert.AreEqual(oldContacts, newContacts);
+            Assert.That(newContacts, Is.EqualTo(oldContacts));
 
         }
 

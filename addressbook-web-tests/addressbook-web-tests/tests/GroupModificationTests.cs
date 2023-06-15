@@ -35,7 +35,7 @@ namespace addressbook_web_tests
             oldGroups.Add(groupNew);
             oldGroups.Sort();
             newGroups.Sort();
-            Assert.AreEqual(oldGroups, newGroups);
+            Assert.That(newGroups, Is.EqualTo(oldGroups));
 
         }
     }

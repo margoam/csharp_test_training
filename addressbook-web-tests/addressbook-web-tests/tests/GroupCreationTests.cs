@@ -80,13 +80,13 @@ namespace addressbook_web_tests
 
             app.Groups.CreateGroup(group);
 
-            Assert.AreEqual(oldGroups.Count + 1, app.Groups.GetCountGroups());
+            Assert.That(app.Groups.GetCountGroups(), Is.EqualTo(oldGroups.Count + 1));
 
             List<GroupData> newGroups = GroupData.GetAll();
             oldGroups.Add(group);
             oldGroups.Sort();
             newGroups.Sort();
-            Assert.AreEqual(oldGroups, newGroups);
+            Assert.That(newGroups, Is.EqualTo(oldGroups));
 
         }
 

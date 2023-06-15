@@ -12,7 +12,7 @@ namespace addressbook_web_tests
                 List<GroupData> fromDB = GroupData.GetAll();
                 fromUI.Sort();
                 fromDB.Sort();
-                Assert.AreEqual(fromUI, fromDB);
+                Assert.That(fromDB, Is.EqualTo(fromUI));
             }
             
         }

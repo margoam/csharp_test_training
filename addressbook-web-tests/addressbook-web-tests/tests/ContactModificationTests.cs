@@ -36,7 +36,7 @@ namespace addressbook_web_tests
             oldContacts.Sort();
             newContacts.Sort();
 
-            Assert.AreEqual(oldContacts, newContacts);
+            Assert.That(newContacts, Is.EqualTo(oldContacts));
 
            
         }

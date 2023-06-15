@@ -50,7 +50,7 @@ namespace addressbook_web_tests
             oldList.Sort();
             newList.Sort();
 
-            Assert.AreEqual(oldList, newList);
+            Assert.That(newList, Is.EqualTo(oldList));
 
         }
     }

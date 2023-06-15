@@ -27,13 +27,13 @@ namespace addressbook_web_tests
 
             app.Groups.Remove(toBeRemoved);
 
-            Assert.AreEqual(oldGroups.Count - 1, app.Groups.GetCountGroups());
+            Assert.That(app.Groups.GetCountGroups(), Is.EqualTo(oldGroups.Count - 1));
             oldGroups.Remove(toBeRemoved);
             List<GroupData> newGroups = GroupData.GetAll();
          
             oldGroups.Sort();
             newGroups.Sort();
-            Assert.AreEqual(oldGroups, newGroups);
+            Assert.That(newGroups, Is.EqualTo(oldGroups));
 
             foreach (GroupData group in newGroups)
             {

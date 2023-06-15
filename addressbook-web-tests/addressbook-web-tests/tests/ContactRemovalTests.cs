@@ -23,14 +23,14 @@ namespace addressbook_web_tests
             ContactData toBeRemoved = oldContacts[0];
             app.Contacts.Remove(toBeRemoved);
 
-            Assert.AreEqual(oldContacts.Count - 1, app.Contacts.GetCountContacts());
+            Assert.That(app.Contacts.GetCountContacts(), Is.EqualTo(oldContacts.Count - 1));
 
             oldContacts.Remove(toBeRemoved);
             List<ContactData> newContacts = ContactData.GetAll();
 
             oldContacts.Sort();
             newContacts.Sort();
-            Assert.AreEqual(oldContacts, newContacts);
+            Assert.That(newContacts, Is.EqualTo(oldContacts));
 
             foreach (ContactData contact in newContacts)
             {
