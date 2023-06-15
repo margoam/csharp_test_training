@@ -37,7 +37,7 @@ namespace addressbook_web_tests
 
             foreach (GroupData group in newGroups)
             {
-                Assert.AreNotEqual(group.Id, toBeRemoved.Id);
+                Assert.That(toBeRemoved.Id, Is.Not.EqualTo(group.Id));
             }
         }
     }

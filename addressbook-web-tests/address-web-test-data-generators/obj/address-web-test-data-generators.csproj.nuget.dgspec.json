@@ -1,33 +1,39 @@
 {
   "format": 1,
   "restore": {
-    "/Users/ritaamosova/Projects/csharp_test_training/addressbook-web-tests/address-web-test-data-generators/address-web-test-data-generators.csproj": {}
+    "C:\\Users\\mozhe\\Source\\Repos\\margoam\\csharp_test_training\\addressbook-web-tests\\address-web-test-data-generators\\address-web-test-data-generators.csproj": {}
   },
   "projects": {
-    "/Users/ritaamosova/Projects/csharp_test_training/addressbook-web-tests/address-web-test-data-generators/address-web-test-data-generators.csproj": {
+    "C:\\Users\\mozhe\\Source\\Repos\\margoam\\csharp_test_training\\addressbook-web-tests\\address-web-test-data-generators\\address-web-test-data-generators.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/ritaamosova/Projects/csharp_test_training/addressbook-web-tests/address-web-test-data-generators/address-web-test-data-generators.csproj",
+        "projectUniqueName": "C:\\Users\\mozhe\\Source\\Repos\\margoam\\csharp_test_training\\addressbook-web-tests\\address-web-test-data-generators\\address-web-test-data-generators.csproj",
         "projectName": "address-web-test-data-generators",
-        "projectPath": "/Users/ritaamosova/Projects/csharp_test_training/addressbook-web-tests/address-web-test-data-generators/address-web-test-data-generators.csproj",
-        "packagesPath": "/Users/ritaamosova/.nuget/packages/",
-        "outputPath": "/Users/ritaamosova/Projects/csharp_test_training/addressbook-web-tests/address-web-test-data-generators/obj/",
+        "projectPath": "C:\\Users\\mozhe\\Source\\Repos\\margoam\\csharp_test_training\\addressbook-web-tests\\address-web-test-data-generators\\address-web-test-data-generators.csproj",
+        "packagesPath": "C:\\Users\\mozhe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mozhe\\Source\\Repos\\margoam\\csharp_test_training\\addressbook-web-tests\\address-web-test-data-generators\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/ritaamosova/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\mozhe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/Users/ritaamosova/Projects/csharp_test_training/addressbook-web-tests/addressbook-web-tests/addressbook-web-tests.csproj": {
-                "projectPath": "/Users/ritaamosova/Projects/csharp_test_training/addressbook-web-tests/addressbook-web-tests/addressbook-web-tests.csproj"
+              "C:\\Users\\mozhe\\Source\\Repos\\margoam\\csharp_test_training\\addressbook-web-tests\\addressbook-web-tests\\addressbook-web-tests.csproj": {
+                "projectPath": "C:\\Users\\mozhe\\Source\\Repos\\margoam\\csharp_test_training\\addressbook-web-tests\\addressbook-web-tests\\addressbook-web-tests.csproj"
               }
             }
           }
@@ -41,6 +47,16 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "linq2db.MySql": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -57,26 +73,32 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.401/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/ritaamosova/Projects/csharp_test_training/addressbook-web-tests/addressbook-web-tests/addressbook-web-tests.csproj": {
+    "C:\\Users\\mozhe\\Source\\Repos\\margoam\\csharp_test_training\\addressbook-web-tests\\addressbook-web-tests\\addressbook-web-tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/ritaamosova/Projects/csharp_test_training/addressbook-web-tests/addressbook-web-tests/addressbook-web-tests.csproj",
+        "projectUniqueName": "C:\\Users\\mozhe\\Source\\Repos\\margoam\\csharp_test_training\\addressbook-web-tests\\addressbook-web-tests\\addressbook-web-tests.csproj",
         "projectName": "addressbook-web-tests",
-        "projectPath": "/Users/ritaamosova/Projects/csharp_test_training/addressbook-web-tests/addressbook-web-tests/addressbook-web-tests.csproj",
-        "packagesPath": "/Users/ritaamosova/.nuget/packages/",
-        "outputPath": "/Users/ritaamosova/Projects/csharp_test_training/addressbook-web-tests/addressbook-web-tests/obj/",
+        "projectPath": "C:\\Users\\mozhe\\Source\\Repos\\margoam\\csharp_test_training\\addressbook-web-tests\\addressbook-web-tests\\addressbook-web-tests.csproj",
+        "packagesPath": "C:\\Users\\mozhe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mozhe\\Source\\Repos\\margoam\\csharp_test_training\\addressbook-web-tests\\addressbook-web-tests\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/ritaamosova/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\mozhe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -115,6 +137,10 @@
               "target": "Package",
               "version": "[2.3.0, )"
             },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
             "Selenium.Support": {
               "target": "Package",
               "version": "[4.5.1, )"
@@ -130,6 +156,10 @@
             "coverlet.collector": {
               "target": "Package",
               "version": "[3.1.2, )"
+            },
+            "linq2db.MySql": {
+              "target": "Package",
+              "version": "[2.0.0, )"
             }
           },
           "imports": [
@@ -148,7 +178,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.401/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
